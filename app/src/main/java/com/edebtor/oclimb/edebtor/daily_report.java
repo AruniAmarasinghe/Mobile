@@ -97,7 +97,7 @@ public class daily_report extends AppCompatActivity {
             public void onClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(daily_report.this);
-                builder.setMessage("Submit Exprenses").setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                builder.setMessage("Submit Expenses").setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         g_amount = e_amount.getText().toString();
@@ -205,13 +205,13 @@ public class daily_report extends AppCompatActivity {
                         String errormsg = json_object.getString("error_msg");
                         //  String[] debetors = new String[]{"No debitor in area"};
 
-                        Toast.makeText(daily_report.this, "Exprenses Register Failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(daily_report.this, "Expenses Register Failed.", Toast.LENGTH_SHORT).show();
 
 
                     }else {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(daily_report.this);
-                        builder.setMessage("Exprenses Register Success").setPositiveButton("Conform", new DialogInterface.OnClickListener() {
+                        builder.setMessage("Expenses Register Success").setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -257,7 +257,7 @@ public class daily_report extends AppCompatActivity {
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    System.out.println("exprenses download error " + e.getMessage());
+                    System.out.println("Expenses download error " + e.getMessage());
                 }
 
             }
