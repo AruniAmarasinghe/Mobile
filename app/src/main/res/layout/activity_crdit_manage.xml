@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".crdit_manage"
+    android:orientation="vertical"
+
+    android:padding="10dp">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Area"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="146dp" />
+
+
+    <Spinner
+        android:id="@+id/select_area"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/focus_border_style"/>
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Customer"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="146dp" />
+
+
+    <Spinner
+        android:id="@+id/select_deetor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/focus_border_style"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/buttonColor"
+        android:textColor="@color/fontColor"
+        android:text="next" />
+
+</LinearLayout>

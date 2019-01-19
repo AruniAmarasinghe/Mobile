@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".debitors_reg"
+    android:orientation="vertical"
+
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NIC"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/nic"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/fname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/lname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address 1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/addres1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address 2"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/addres2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number 1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/phno1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="phone"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number 2"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/phno2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="phone"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <Button
+            android:id="@+id/btn_customer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/buttonColor"
+            android:textColor="@color/fontColor"
+            android:text="Add Customer" />
+
+    </LinearLayout>
+
+</ScrollView>

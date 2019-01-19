@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.edebtor.oclimb.edebtor">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".crdit_manage" />
+        <activity android:name=".collection" />
+        <activity android:name=".printers.DeviceListActivity" />
+        <activity android:name=".printers.PrinterActivity" />
+        <activity android:name=".main_menu" />
+        <activity android:name=".loading" />
+        <activity android:name=".debitors_reg" />
+        <activity android:name=".sync" />
+        <activity android:name=".loan_apply" />
+        <activity android:name=".cridit_histry" />
+        <activity android:name=".daily_report_view" />
+        <activity android:name=".daily_report" />
+    </application>
+
+</manifest>

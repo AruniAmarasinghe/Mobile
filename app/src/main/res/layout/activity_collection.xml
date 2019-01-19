@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".collection"
+    android:orientation="vertical"
+
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/textView2_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily Payment Amount"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/installment_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Granted Amount"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/granted_amount"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Granted Amount"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/total_granted_amount"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Payment Date"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/last_payement_date"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due Payment Dates"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/due_date"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="number"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <!-- <TextView
+             android:id="@+id/textView8"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Balance"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="20dp"
+             tools:layout_editor_absoluteX="7dp"
+             tools:layout_editor_absoluteY="146dp" />
+
+
+         <EditText
+             android:id="@+id/balance"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
+             android:ems="10"
+             android:focusable="false"
+             android:paddingLeft="10dp"
+             android:background="@drawable/focus_border_style"
+             />-->
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paying For"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <Spinner
+            android:id="@+id/select_days"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"/>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub Total"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/sub_total"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Additional Amount"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/additional_amount"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+            android:text="0"
+            />
+
+        <!-- <TextView
+             android:id="@+id/textView3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Paid Amount"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="20dp"
+             tools:layout_editor_absoluteX="7dp"
+             tools:layout_editor_absoluteY="146dp" />
+
+
+         <EditText
+             android:id="@+id/paid_amount"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
+             android:ems="10"
+             android:paddingLeft="10dp"
+             android:background="@drawable/focus_border_style"
+             />
+ -->
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Amount"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <EditText
+            android:id="@+id/total_amount"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:focusable="false"
+            android:paddingLeft="10dp"
+            android:background="@drawable/focus_border_style"
+
+            />
+        <Button
+            android:id="@+id/btn_print"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/buttonColor"
+            android:textColor="@color/fontColor"
+            android:text="Print" />
+
+        <Button
+            android:id="@+id/btn_histry"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/buttonColor"
+            android:textColor="@color/fontColor"
+            android:text="History" />
+
+    </LinearLayout>
+
+</ScrollView>
