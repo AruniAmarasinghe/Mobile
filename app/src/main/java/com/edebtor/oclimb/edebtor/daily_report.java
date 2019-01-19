@@ -119,7 +119,7 @@ public class daily_report extends AppCompatActivity {
 
                     }
                 })
-                        .setNegativeButton("cancel",null) ;
+                        .setNegativeButton("Cancel",null) ;
                 AlertDialog alt =   builder.create();
                 alt.show();
 
@@ -205,13 +205,13 @@ public class daily_report extends AppCompatActivity {
                         String errormsg = json_object.getString("error_msg");
                         //  String[] debetors = new String[]{"No debitor in area"};
 
-                        Toast.makeText(daily_report.this, "Expenses Register Failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(daily_report.this, "Failed to register expenses.", Toast.LENGTH_SHORT).show();
 
 
                     }else {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(daily_report.this);
-                        builder.setMessage("Expenses Register Success").setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                        builder.setMessage("Expenses successfully registered!").setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
