@@ -114,10 +114,10 @@ public class crdit_manage extends AppCompatActivity {
             public void onClick(View view) {
 
                 AlertDialog.Builder altdial= new AlertDialog.Builder(crdit_manage.this);
-                altdial.setMessage("Are you sure?").setCancelable(false)
-                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+//                altdial.setMessage("Are you sure?").setCancelable(false)
+//                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
 
                                 // Intent i = new Intent(crdit_manage.this, PrinterActivity.class);
                                 //System.out.println("aaaaaaaaaaaa"+getArea_value.getSelectedItem());
@@ -132,14 +132,14 @@ public class crdit_manage extends AppCompatActivity {
                                     startActivity(in);
                                 }
 
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
+//                            }
+//                        })
+//                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                dialogInterface.cancel();
+//                            }
+//                        });
 
                 AlertDialog alert= altdial.create();
                 /*alert.setTitle("Credit");*/
