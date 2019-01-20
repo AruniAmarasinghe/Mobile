@@ -136,7 +136,7 @@ public class collection extends AppCompatActivity {
             public void onClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(collection.this);
-                builder.setMessage("Payement").setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                builder.setMessage("Do you want to save the payment?").setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
