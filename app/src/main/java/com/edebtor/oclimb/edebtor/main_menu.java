@@ -9,9 +9,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.net.Uri;
 
 public class main_menu extends AppCompatActivity {
-    Button btn_crtManage,new_loan,new_cus,my_profile,sync,logout;
+    Button btn_crtManage,new_loan,new_cus,my_profile,sync,logout,url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class main_menu extends AppCompatActivity {
         //new_loan=findViewById(R.id.new_loan);
         //new_cus=findViewById(R.id.new_cus);
         //my_profile=findViewById(R.id.my_profile);
+        url =findViewById(R.id.url);
         sync=findViewById(R.id.sync);
         logout=findViewById(R.id.logout);
 
@@ -121,7 +123,6 @@ public class main_menu extends AppCompatActivity {
 //            }
 //        });
 
-
         sync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,8 +167,6 @@ public class main_menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
                 Intent intent = new Intent(main_menu.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -178,18 +177,25 @@ public class main_menu extends AppCompatActivity {
         });
 
 //        my_profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
+//        @Override
+//        public void onClick(View view) {
 //
 //                // Intent i = new Intent(crdit_manage.this, PrinterActivity.class);
 //                Intent i = new Intent(main_menu.this, daily_report.class);
 //                // i.putExtra("crdit_id", crdit_id);
 //                startActivity(i);
-//
-//
-//            }
-//        });
+//        }
+//    });
+
+        url.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Uri uri = Uri.parse("http://g5.creditlanka.com/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
     }
 
