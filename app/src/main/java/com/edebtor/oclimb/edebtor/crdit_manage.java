@@ -113,7 +113,7 @@ public class crdit_manage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder altdial= new AlertDialog.Builder(crdit_manage.this);
+//                AlertDialog.Builder altdial= new AlertDialog.Builder(crdit_manage.this);
 //                altdial.setMessage("Are you sure?").setCancelable(false)
 //                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
 //                            @Override
@@ -141,9 +141,9 @@ public class crdit_manage extends AppCompatActivity {
 //                            }
 //                        });
 
-                AlertDialog alert= altdial.create();
-                /*alert.setTitle("Credit");*/
-                alert.show();
+//                AlertDialog alert= altdial.create();
+//                /*alert.setTitle("Credit");*/
+//                alert.show();
 
 
 
@@ -168,7 +168,7 @@ public class crdit_manage extends AppCompatActivity {
 
         getArea_value.setAdapter(spinnerArrayAdapter);
 
-        Toast.makeText(crdit_manage.this, "Load area", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(crdit_manage.this, "Load area", Toast.LENGTH_SHORT).show();
     }
 
     //==========================================================================================
@@ -186,7 +186,7 @@ public class crdit_manage extends AppCompatActivity {
 
         getDebitor_value.setAdapter(spinnerArrayAdapter);
 
-        Toast.makeText(crdit_manage.this, "Load getDebitor value", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(crdit_manage.this, "Load getDebitor value", Toast.LENGTH_SHORT).show();
     }
 
     //==========================================================================================
