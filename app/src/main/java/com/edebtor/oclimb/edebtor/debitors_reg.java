@@ -78,21 +78,21 @@ public class debitors_reg extends AppCompatActivity {
                         //  System.out.println("mmmmmmmmmmmmm"+g_nic);
 
                         if(g_nic.equals("")){
-                            Toast.makeText(debitors_reg.this, "Please Enter NIC.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(debitors_reg.this, "Please enter the NIC.", Toast.LENGTH_SHORT).show();
                         }else
                         if(g_fname.equals("")){
-                            Toast.makeText(debitors_reg.this, "Please Enter First Name.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(debitors_reg.this, "Please enter the First Name.", Toast.LENGTH_SHORT).show();
                         }else
                         if(g_lname.equals("")){
-                            Toast.makeText(debitors_reg.this, "Please Enter Last Name.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(debitors_reg.this, "Please enter the Last Name.", Toast.LENGTH_SHORT).show();
                         }else
 
                         if(g_address1.equals("")){
-                            Toast.makeText(debitors_reg.this, "Please Enter Address.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(debitors_reg.this, "Please enter the Address.", Toast.LENGTH_SHORT).show();
                         }else
 
                         if(g_pno1.equals("")){
-                            Toast.makeText(debitors_reg.this, "Please Enter Phone No.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(debitors_reg.this, "Please enter the Phone No.", Toast.LENGTH_SHORT).show();
                         }else {
 
                             if(g_email.equals("")){
@@ -114,7 +114,7 @@ public class debitors_reg extends AppCompatActivity {
 
                     }
                 })
-                        .setNegativeButton("cancel",null) ;
+                        .setNegativeButton("Cancel",null) ;
                 AlertDialog alt =   builder.create();
                 alt.show();
 
@@ -212,13 +212,13 @@ public class debitors_reg extends AppCompatActivity {
                         String errormsg = json_object.getString("error_msg");
                         //  String[] debetors = new String[]{"No debitor in area"};
 
-                        Toast.makeText(debitors_reg.this, "Customer Register Failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(debitors_reg.this, "Customer registration failed!", Toast.LENGTH_SHORT).show();
 
 
                     }else {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(debitors_reg.this);
-                        builder.setMessage("Customer Register Success").setPositiveButton("Conform", new DialogInterface.OnClickListener() {
+                        builder.setMessage("Customer registered successfully!").setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
