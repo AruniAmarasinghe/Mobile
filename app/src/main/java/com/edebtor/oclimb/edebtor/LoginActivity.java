@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else if(lo_result != "0"){
 
-                    Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
                     uid = lo_result;
                     Intent i = new Intent(LoginActivity.this, loading.class);
                     startActivity(i);
@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(result.isError()){
                             Toast.makeText(LoginActivity.this, result.getError_msg(), Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
                             uid = result.getIdUser();
                             Intent i = new Intent(LoginActivity.this, loading.class);
                             startActivity(i);
