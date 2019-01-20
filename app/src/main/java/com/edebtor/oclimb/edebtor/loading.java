@@ -96,7 +96,7 @@ public class loading extends AppCompatActivity {
     }
 
     private  void connection(){
-        Toast.makeText(loading.this, "Success.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(loading.this, "Success.", Toast.LENGTH_SHORT).show();
 
 
 
@@ -899,7 +899,7 @@ public class loading extends AppCompatActivity {
 
                         //  System.out.println("ttttt message " + errormsg);
 
-                        Toast.makeText(loading.this, "Debetor Success.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(loading.this, "Debetor Success.", Toast.LENGTH_SHORT).show();
 
                       /*  JSONArray arr = json_object.getJSONArray("get_debetor");
                         String[] debetors = new String[arr.length()];*/
