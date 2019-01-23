@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
 
                     AlertDialog.Builder altdial= new AlertDialog.Builder(LoginActivity.this);
-                    altdial.setMessage("No Internet Connection").setCancelable(false)
+                    altdial.setMessage("No Internet Connection. Please check your connection and try again.").setCancelable(false)
 
                             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                                 @Override
