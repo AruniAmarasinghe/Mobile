@@ -195,6 +195,7 @@ public class main_menu extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         Intent intent = new Intent(main_menu.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
 
