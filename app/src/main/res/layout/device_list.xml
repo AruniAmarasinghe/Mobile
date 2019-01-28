@@ -37,7 +37,8 @@
     <Button android:id="@+id/button_scan"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="#014924"
         android:text="@string/button_scan"
-        />
+        android:textColor="@color/fontColor"/>
 
 </LinearLayout>

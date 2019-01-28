@@ -11,8 +11,10 @@
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="100dp"
-        android:text="Scan"/>
+        android:layout_marginTop="150dp"
+        android:background="#014924"
+        android:text="Scan"
+        android:textColor="@color/fontColor"/>
 
     <Button
         android:id="@+id/btn_test"
@@ -21,7 +23,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
-        android:text="Print"/>
+        android:background="#014924"
+        android:text="Print"
+        android:textColor="@color/fontColor"/>
 
     <Button
         android:id="@+id/btn_stop"
@@ -30,7 +34,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
-        android:text="Stop"/>
+        android:background="#014924"
+        android:text="Stop"
+        android:textColor="@color/fontColor"/>
 
     <Button
         android:id="@+id/btn_cansel"
@@ -39,6 +45,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
-        android:text="Cancel"/>
+        android:background="#014924"
+        android:text="Cancel"
+        android:textColor="@color/fontColor"/>
 
 </LinearLayout>
