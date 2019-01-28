@@ -105,12 +105,8 @@ public class collection extends AppCompatActivity {
                     sub_total.setText(String.valueOf(need_payement));
                 }
 
-                // System.out.println("crdit_ids[pos] download " + crdit_ids[pos]);
-                // Toast.makeText(crdit_manage.this, crdit_ids[pos], Toast.LENGTH_SHORT).show();
-
             }
             public void onNothingSelected(AdapterView<?> parent) {
-                //  Toast.makeText(crdit_manage.this, "Spinner1: unselected", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -173,7 +169,6 @@ public class collection extends AppCompatActivity {
                         String Status = "1";
                         String sync_status = "1";
 
-                        // Log.d("assss2-----------",ids.toString());
 
                         if (Amount.equals("")) {
                             Toast.makeText(collection.this, "Please Enter Sub Total.", Toast.LENGTH_SHORT).show();
@@ -250,7 +245,6 @@ public class collection extends AppCompatActivity {
 
     private void setcrditDe(String installment,String lastDate,int dateDiff) {
 
-        // System.out.println("aaaaaaaaaaa"+installment);
         installment_text = (EditText) findViewById(R.id.installment_text);
         installment_text.setText(installment);
 
@@ -262,7 +256,6 @@ public class collection extends AppCompatActivity {
 
     private void setdates() {
 
-        // System.out.println("oooook");
         String[] xs = new String[] {"1 Days","2 Days","3 Days","4 Days","5 Days","6 Days","7 Days","Full Amount"};
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
                 context, android.R.layout.simple_spinner_item, xs
@@ -365,7 +358,6 @@ public class collection extends AppCompatActivity {
 
         try {
             //   int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("pppppppppp1");
             String payment[] = db.getinvoice_payment(crdit_id);
 
            /* payment[0] = get_DailyEqualPayment;
@@ -398,13 +390,11 @@ public class collection extends AppCompatActivity {
             //get_Pno1.setText(c_Pno1);
             //sub_total.setText(DailyPaymentAmount);
 
-            //System.out.println("pppppppppp1ss--"+total_granted_amount);
 
             instalment_payemet = Double.parseDouble(DailyPaymentAmount);
             need_payement = Double.parseDouble(allTotalAmount) - instalment_payemet;
 
             get_due = String.valueOf(Double.parseDouble(allTotalAmount) - Double.parseDouble(get_PaidAmount) );
-            //  System.out.println("awwo--"+payment[3]);
 
 
         }catch (Exception e){

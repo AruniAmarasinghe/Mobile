@@ -73,14 +73,13 @@ public class crdit_manage extends AppCompatActivity {
                     area_id =pos;
                 }
                 DownloadDebitor(area_id);
-                //  System.out.println("crdit_ids[pos] download " +pos);
-                // Toast.makeText(crdit_manage.this, area_ids[pos], Toast.LENGTH_SHORT).show();
+
                 // new DownloadDebitor().execute();
 
 
             }
             public void onNothingSelected(AdapterView<?> parent) {
-                //  Toast.makeText(crdit_manage.this, "Spinner1: unselected", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -91,14 +90,11 @@ public class crdit_manage extends AppCompatActivity {
                     crdit_id = crdit_ids[pos];
                     crdit_cust = debetors[pos];
 
-                    //System.out.println("crdit_cust -download " + crdit_cust);
                 }
-                //System.out.println("crdit_ids[pos] download " + view);
-                //    Toast.makeText(crdit_manage.this, crdit_ids[pos], Toast.LENGTH_SHORT).show();
 
             }
             public void onNothingSelected(AdapterView<?> parent) {
-                //  Toast.makeText(crdit_manage.this, "Spinner1: unselected", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -316,11 +312,7 @@ public class crdit_manage extends AppCompatActivity {
 
         try {
             //   int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("pppppppppp1");
             ArrayList<two_item> list = db.getUserAreaDebetor(areaid);
-            //  System.out.println("pppppppppp");
-
-            // System.out.println("pppppppppp1---"+list.size());
 
 
 
@@ -329,13 +321,10 @@ public class crdit_manage extends AppCompatActivity {
                 crdit_ids = new String[list.size()];
                 int i=0;
                 for (two_item t : list) {
-                    //    System.out.println("--aaaaaa---"+t.getValue());
 
-
-                    //     System.out.println("--aaaaaa---"+i);
                     crdit_ids[i] = t.getId();
                     debetors[i] = t.getValue();
-                    //  System.out.println("--aaaaaa---"+i);
+
                     i++;
                     // Log.i("Value of element "+i, String.valueOf(list.get(i)));
                 }
@@ -345,7 +334,7 @@ public class crdit_manage extends AppCompatActivity {
                 setDebitorValue(debetors);
             }
 
-            //System.out.println("zzzzz-");
+
 
 
         }catch (Exception e){

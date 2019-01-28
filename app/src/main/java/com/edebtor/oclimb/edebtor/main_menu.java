@@ -14,11 +14,13 @@ import android.net.Uri;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+//import android.app.ProgressDialog;
 
 
 public class main_menu extends AppCompatActivity {
     Button btn_crtManage,new_loan,new_cus,my_profile,sync,logout,url;
     private android.webkit.WebView mWebView;
+   // private ProgressDialog mProgress;
 
 
     @Override
@@ -32,24 +34,18 @@ public class main_menu extends AppCompatActivity {
         //new_loan=findViewById(R.id.new_loan);
         //new_cus=findViewById(R.id.new_cus);
         //my_profile=findViewById(R.id.my_profile);
-        //Button webview = findViewById(R.id.webview1);
-       // mWebView = (android.webkit.WebView)findViewById(R.id.mWebView1);
         url =findViewById(R.id.url);
         sync=findViewById(R.id.sync);
         logout=findViewById(R.id.logout);
 
-        //open website within the app
-//        webview.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                //webView.getSettings().setJavaScriptEnabled(true);
-//                //mWebView.getSettings().setJavaScriptEnabled(true);
-//                //mWebView.loadUrl("http://g5.creditlanka.com/");
-//            }
-//
-//        });
-        //end of event
+        //progress bar
+        /*Context context=this;
+        mProgress = new ProgressDialog(context);
+        mProgress.setTitle("Processing...");
+        mProgress.setMessage("Please wait...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);*/
+
 
         btn_crtManage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,7 +171,6 @@ public class main_menu extends AppCompatActivity {
                             });
 
                     AlertDialog alert= altdial.create();
-                    /*alert.setTitle("Credit");*/
                     alert.show();
                 }
 
@@ -189,10 +184,13 @@ public class main_menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             AlertDialog.Builder altdial= new AlertDialog.Builder(main_menu.this);
+               // mProgress.show();
             altdial.setMessage("Are you sure?").setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                        //mProgress.dismiss();
 
                         Intent intent = new Intent(main_menu.this, LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -204,6 +202,7 @@ public class main_menu extends AppCompatActivity {
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        //mProgress.dismiss();
                         dialogInterface.cancel();
                     }
                 });
@@ -214,7 +213,6 @@ public class main_menu extends AppCompatActivity {
 //                Intent intent = new Intent(main_menu.this, LoginActivity.class);
 //                startActivity(intent);
 //                finish();
-                //System.exit(0);
 
             }
         });

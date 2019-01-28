@@ -43,10 +43,9 @@ public class daily_report_view extends AppCompatActivity {
 
             //  int cre_id =collection.cr_id;
             int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("crrrrrrrrrrrrr"+cre_id);
 
             ArrayList<credit_report> list = db.getuserDily_Payment_report(uid);
-            //System.out.println("pppppppppp");
+
 
             if(list.size() > 0) {
 
@@ -57,7 +56,6 @@ public class daily_report_view extends AppCompatActivity {
                 cr_item = new ArrayList<>();
 
                 for (credit_report t : list) {
-                    // System.out.println("--aaaaaa---" + t.getCrdit());
 
                     int sid = Integer.parseInt(t.getId());
 

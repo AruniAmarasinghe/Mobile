@@ -201,7 +201,6 @@ public class debitors_reg extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt de " + json_object.toString());
 
 
                 try {
@@ -222,11 +221,6 @@ public class debitors_reg extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-
-
-
-
-                                //Toast.makeText(debitors_reg.this, "Customer Register Success.", Toast.LENGTH_SHORT).show();
 
                                 Intent in = new Intent(debitors_reg.this, main_menu.class);
                                 startActivity(in);

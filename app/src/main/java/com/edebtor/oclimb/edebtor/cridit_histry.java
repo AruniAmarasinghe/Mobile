@@ -40,10 +40,10 @@ public class cridit_histry extends AppCompatActivity {
         try {
 
             int cre_id =collection.cr_id;
-            //System.out.println("crrrrrrrrrrrrr"+cre_id);
+
 
             ArrayList<credit_report> list = db.getuserPayment_report(cre_id);
-            //System.out.println("pppppppppp");
+
 
             if(list.size() > 0) {
 
@@ -54,15 +54,13 @@ public class cridit_histry extends AppCompatActivity {
                 cr_item = new ArrayList<>();
 
                 for (credit_report t : list) {
-                    // System.out.println("--aaaaaa---" + t.getCrdit());
+
 
                     int sid = Integer.parseInt(t.getId());
 
                     cr_item.add(new crdit_histry_item(sid,t.getDe_date(),t.getDe_name(),t.getCrdit()));
-                    //     System.out.println("--aaaaaa---"+i);
                     // area_ids[i] = t.getId();
                     // area[i] = t.getValue();
-                    //  System.out.println("--aaaaaa---"+i);
                     i++;
                     // Log.i("Value of element "+i, String.valueOf(list.get(i)));
                 }
@@ -86,7 +84,6 @@ public class cridit_histry extends AppCompatActivity {
                 //setDebitorValue(debetors);
                 // setAreaValue(area);
             }
-            //System.out.println("zzzzz-");
 
 
         }catch (Exception e){

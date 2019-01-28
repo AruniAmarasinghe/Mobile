@@ -62,10 +62,9 @@ public class daily_report extends AppCompatActivity {
 
             //  int cre_id =collection.cr_id;
             int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("crrrrrrrrrrrrr"+cre_id);
+
 
             String stotal = db.getuserDily_Payment_tot(uid);
-            //System.out.println("pppppppppp");
 
             s_tot.setText(stotal);
 
@@ -179,11 +178,11 @@ public class daily_report extends AppCompatActivity {
 
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
+
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -194,7 +193,6 @@ public class daily_report extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt de " + json_object.toString());
 
 
                 try {
