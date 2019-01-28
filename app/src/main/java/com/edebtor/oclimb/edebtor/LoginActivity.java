@@ -22,6 +22,7 @@ import javax.sql.CommonDataSource;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.app.ProgressDialog;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -37,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     Database db;
 
     Context context=this;
+
+    private ProgressDialog mProgress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,23 +54,28 @@ public class LoginActivity extends AppCompatActivity {
 
         lo_result ="0";
 
+        //progress bar
+        mProgress = new ProgressDialog(context);
+        mProgress.setTitle("Processing...");
+        mProgress.setMessage("Please wait...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Intent i = new Intent(LoginActivity.this, crdit_manage.class);
                 //startActivity(i);
+                mProgress.show();
                 try {
 
                     lo_result = db.user_login(et_uname.getText().toString(),et_pass.getText().toString());
-                    //System.out.println("pppppppppp "+lo_result);
 
                 }catch (Exception e){
 
                 }
 
-
-                // System.out.println("pppppppppp "+lo_result);
                 ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 android.net.NetworkInfo wifi = cm
                         .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -81,14 +89,15 @@ public class LoginActivity extends AppCompatActivity {
                 }else if(lo_result != "0"){
 
                     //Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
+                    mProgress.dismiss();
                     uid = lo_result;
                     Intent i = new Intent(LoginActivity.this, loading.class);
                     startActivity(i);
 
-                    System.out.println("uuuu-"+uid);
 
                 }else{
 
+                    mProgress.dismiss();
                     AlertDialog.Builder altdial= new AlertDialog.Builder(LoginActivity.this);
                     altdial.setMessage("No Internet Connection. Please check your connection and try again.").setCancelable(false)
 
@@ -100,7 +109,6 @@ public class LoginActivity extends AppCompatActivity {
                             });
 
                     AlertDialog alert= altdial.create();
-                    /*alert.setTitle("Credit");*/
                     alert.show();
                 }
 
