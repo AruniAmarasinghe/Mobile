@@ -37,6 +37,8 @@ import java.util.HashMap;
 
 public class collection extends AppCompatActivity {
     public static String msg;
+    public static String msg1;
+    public static String msg2;
     public static int cr_id;
     int crdit_id;
     Button btn_print, btn_histry;
@@ -188,8 +190,22 @@ public class collection extends AppCompatActivity {
 
                             // System.out.println("crdit_cust -download " + getcrdit_cust);
 
-                            msg = "\n KDG micro credits    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Rental : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
-                                    " Total Paiyed : Rs." + get_PaidAmount + "\n Total Due : Rs." + get_due + "\n Today Paid : Rs." + g_total_amount + " \n ----------------------------- \n Hotline - 071 26 27 176 \n \n   Powerd by Oclimb Solution \n        071 122 68 18 \n";
+                            //to get extra the amount paid by the customer excluding the monhtly installment
+                            //if(Double.parseDouble(g_total_amount) != 0){
+                                double extraPaid = Double.parseDouble(g_total_amount) - Double.parseDouble(g_installment_text);
+                            //}
+
+                            /*msg = "\n G5 Credit Lanka    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Rental (Monthly Installment) : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
+                                    " Total Paid : Rs." + get_PaidAmount + "\n Total Due : Rs." + get_due + "\n Amount Paid on the current day : Rs." + g_total_amount + " \n ----------------------------- \n Hotline - 071 986 20 62 \n \n   Powered by SaviMaga \n        071 986 20 62 \n";*/
+
+                            msg1 = "\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Rental (Installment) : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
+                                    " Total Paid : Rs." + get_PaidAmount + "\n Total Due : Rs." + get_due + "\n Additional amount : Rs." + String.valueOf(extraPaid) +  " \n\n --------------- " + "\n Customer Signature" + " \n ----------------------------- \n Hotline - 071 986 20 62 \n \n   Powered by SaviMaga \n        071 986 20 62 \n";
+
+                            msg2 = "\n\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Rental (Installment) : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
+                                    " Total Paid : Rs." + get_PaidAmount + "\n Total Due : Rs." + get_due + "\n Additional amount paid: Rs." + String.valueOf(extraPaid) + " \n ----------------------------- \n Hotline - 071 986 20 62 \n \n   Powered by SaviMaga \n        071 986 20 62 \n\n";
+
+
+                            msg = msg1 + msg2;
                             // Intent i = new Intent(crdit_manage.this, PrinterActivity.class);
                             Intent ii = new Intent(collection.this, PrinterActivity.class);
 
@@ -200,7 +216,7 @@ public class collection extends AppCompatActivity {
 
 
                     }
-                }).setNegativeButton("cancel",null) ;
+                }).setNegativeButton("Cancel",null) ;
                 AlertDialog alt =   builder.create();
                 alt.show();
 

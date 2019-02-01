@@ -127,8 +127,25 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(Call<APIRespose> call, Response<APIRespose> response) {
                         APIRespose result = response.body();
                         if(result.isError()){
-                            Toast.makeText(LoginActivity.this, result.getError_msg(), Toast.LENGTH_SHORT).show();
+                            mProgress.dismiss();
+                            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(LoginActivity.this);
+
+                            dlgAlert.setMessage("Wrong Username or Password. Please try again.");
+                            dlgAlert.setTitle("Error");
+                            dlgAlert.setPositiveButton("OK", null);
+                            dlgAlert.setCancelable(true);
+                            dlgAlert.create().show();
+
+                            dlgAlert.setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                });
+
+                            //Toast.makeText(LoginActivity.this, result.getError_msg(), Toast.LENGTH_SHORT).show();
                         }else{
+                            mProgress.dismiss();
                             //Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
                             uid = result.getIdUser();
                             Intent i = new Intent(LoginActivity.this, loading.class);
