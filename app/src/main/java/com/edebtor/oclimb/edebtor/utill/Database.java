@@ -588,7 +588,7 @@ public class Database extends SQLiteOpenHelper{
         //  String query1 = "SELECT * FROM "+debitors+" i JOIN "+credit_invoice+" c ON i."+idDebitors+" = c."+idDebitors+ " WHERE c."+idCredit_Invoice+"="+crid;
 
         // String query = "SELECT * FROM " + collection_area ;
-        String query = "SELECT * FROM "+invoice_payments+" i LEFT JOIN "+credit_invoice+" c ON i."+idCredit_Invoice+" = c."+idCredit_Invoice+" \n" +
+        String query = "SELECT * FROM "+invoice_payments+" i JOIN "+credit_invoice+" c ON i."+idCredit_Invoice+" = c."+idCredit_Invoice+" \n" +
                 "WHERE c."+idCredit_Invoice+"="+crid+"  AND c."+Status+"='1' AND i."+Status+" ='1' ORDER BY i."+payement_DateTime+" DESC LIMIT 1; " ;
 
        // System.out.println("get_DailyEqualPayment "+query1);
