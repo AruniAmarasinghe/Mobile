@@ -588,7 +588,8 @@ public class Database extends SQLiteOpenHelper{
         //  String query1 = "SELECT * FROM "+debitors+" i JOIN "+credit_invoice+" c ON i."+idDebitors+" = c."+idDebitors+ " WHERE c."+idCredit_Invoice+"="+crid;
 
         // String query = "SELECT * FROM " + collection_area ;
-        String query = "SELECT * FROM "+invoice_payments+" i JOIN "+credit_invoice+" c ON i."+idCredit_Invoice+" = c."+idCredit_Invoice+" \n" +
+        //Modified
+        String query = "SELECT * FROM "+invoice_payments+" i FULL OUTER JOIN "+credit_invoice+" c ON i."+idCredit_Invoice+" = c."+idCredit_Invoice+" \n" +
                 "WHERE c."+idCredit_Invoice+"="+crid+"  AND c."+Status+"='1' AND i."+Status+" ='1' ORDER BY i."+payement_DateTime+" DESC LIMIT 1; " ;
 
        // System.out.println("get_DailyEqualPayment "+query1);
@@ -644,6 +645,9 @@ public class Database extends SQLiteOpenHelper{
                 Double get_PenaltyPaid =cursor.getDouble(cursor.getColumnIndex(PenaltyPaid));
                 String get_Days =cursor.getString(cursor.getColumnIndex(Days));
                // String get_PaidAmount =cursor.getString(cursor.getColumnIndex(PaidAmount));
+
+
+                System.out.println("paid amount-"+get_PaidAmount);
 
                 String getTotal_amount = String.valueOf(get_PaidAmount + get_PenaltyPaid);
 
@@ -793,7 +797,7 @@ public class Database extends SQLiteOpenHelper{
                 Calendar cal = Calendar.getInstance();
                 String curent_date=  dateFormat.format(cal.getTime());
 
-                // System.out.println("opopopo-"+get_DateTime +"  "+curent_date);
+
 
                 try {
                     Date last_pament = dateFormat.parse(get_DateTime);
