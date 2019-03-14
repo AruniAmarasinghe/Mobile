@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class sync extends AppCompatActivity {
 
-    String   uid,dailyPay,payFor,addAmount,paidAmount,cid;
+    String uid,dailyPay,payFor,addAmount,paidAmount,cid;
     Database db;
     Context context=this;
 
