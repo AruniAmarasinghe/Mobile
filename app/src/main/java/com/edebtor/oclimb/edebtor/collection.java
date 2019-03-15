@@ -183,7 +183,7 @@ public class collection extends AppCompatActivity {
 
                             db.invoice_payments_data(idInvoice_Payments, Amount, AdditionalAmount, DateTime, PayFor, Credit_Invoice_idCredit_Invoice, user_idUser, Status, sync_status);
 
-                            Toast.makeText(collection.this, "Payment Success.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(collection.this, "Payment Success!", Toast.LENGTH_SHORT).show();
 
                             // String insallment_p ="200";
                             String getcrdit_cust= crdit_manage.crdit_cust;
@@ -192,21 +192,30 @@ public class collection extends AppCompatActivity {
 
                             //to get extra the amount paid by the customer excluding the monhtly installment
                             //if(Double.parseDouble(g_total_amount) != 0){
+                                String total_Granted_Amount = total_granted_amount.getText().toString();
+                                System.out.println("total_Granted_Amount>>>>>> : " + total_Granted_Amount);
+
                                 double extraPaid = Double.parseDouble(g_total_amount) - Double.parseDouble(g_installment_text);
                                 String extra = String.format("%.2f", extraPaid);
                                 double totalPaidAmount = Double.parseDouble(AdditionalAmount) + Double.parseDouble(g_installment_text);
                                 String totalPaid = String.format("%.2f", totalPaidAmount);
+                                double totalDue = Double.parseDouble(total_Granted_Amount) - Double.parseDouble(totalPaid);
+                                String dueAmount = String.format("%.2f", totalDue);
+//                                double totalDue = Double.parseDouble(total_Granted_Amount) - Double.parseDouble(get_PaidAmount);
+//                                String dueAmount = String.format("%.2f", totalDue);
+
+
                             //String.valueOf(extraPaid);
                             //}
 
                             /*msg = "\n G5 Credit Lanka    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Rental (Monthly Installment) : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
                                     " Total Paid : Rs." + get_PaidAmount + "\n Total Due : Rs." + get_due + "\n Amount Paid on the current day : Rs." + g_total_amount + " \n ----------------------------- \n Hotline - 071 986 20 62 \n \n   Powered by SaviMaga \n        071 986 20 62 \n";*/
 
-                            msg1 = "\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Installment : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
-                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + get_due + "\n Additional amount : Rs." + extra +  " \n\n --------------- " + "\n Customer Signature" + " \n ----------------------------- \n Hotline - 071 986 20 62 \n \n   Powered by SaviMaga \n        071 986 20 62 \n";
+                            msg1 = "\n\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Installment : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
+                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + dueAmount + "\n Additional amount : Rs." + extra +  " \n\n --------------- " + "\n Customer Signature" + " \n ----------------------------- \n Hotline - 071 234 56 78  \n \n   Powered by SaviMaga \n        071 234 56 78 \n";
 
                             msg2 = "\n\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Installment : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
-                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + get_due + "\n Additional amount : Rs." + extra + " \n ----------------------------- \n Hotline - 071 986 20 62 \n \n   Powered by SaviMaga \n        071 986 20 62 \n\n";
+                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + dueAmount + "\n Additional amount : Rs." + extra + " \n ----------------------------- \n Hotline - 071 234 56 78  \n \n   Powered by SaviMaga \n        071 234 56 78  \n\n";
 
 
                             msg = msg1 + msg2;
