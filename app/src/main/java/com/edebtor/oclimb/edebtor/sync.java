@@ -149,13 +149,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -219,10 +213,6 @@ public class sync extends AppCompatActivity {
                     }
                     //   setAreaValue(area);
 
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -231,9 +221,6 @@ public class sync extends AppCompatActivity {
 
             }
         }
-
-
-
     }
 
 //==========================================================================================
@@ -244,13 +231,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -312,10 +293,6 @@ public class sync extends AppCompatActivity {
                     }
                     //   setAreaValue(area);
 
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -324,9 +301,6 @@ public class sync extends AppCompatActivity {
 
             }
         }
-
-
-
     }
 
 //==========================================================================================
@@ -338,13 +312,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -418,11 +386,6 @@ public class sync extends AppCompatActivity {
 
                     }
                     //   setAreaValue(area);
-
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -432,11 +395,7 @@ public class sync extends AppCompatActivity {
             }
         }
 
-
-
     }
-
-
 
 //==========================================================================================
 
@@ -447,13 +406,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -521,11 +474,6 @@ public class sync extends AppCompatActivity {
 
                     }
                     //   setAreaValue(area);
-
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -534,8 +482,6 @@ public class sync extends AppCompatActivity {
 
             }
         }
-
-
 
     }
 
@@ -549,12 +495,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
 
             super.onPreExecute();
 
@@ -653,12 +594,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
 
             super.onPreExecute();
 
@@ -724,10 +660,6 @@ public class sync extends AppCompatActivity {
                     }
                     //   setAreaValue(area);
 
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -736,8 +668,6 @@ public class sync extends AppCompatActivity {
 
             }
         }
-
-
 
     }
 
@@ -800,13 +730,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -828,11 +752,6 @@ public class sync extends AppCompatActivity {
                 params.put("addAmount", addAmount);
                 params.put("paidAmount", paidAmount);
                 params.put("cid", cid);
-
-
-
-
-
 
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
@@ -888,13 +807,6 @@ public class sync extends AppCompatActivity {
 
                     }
 
-
-
-
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -915,12 +827,7 @@ public class sync extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
 
             super.onPreExecute();
 
@@ -985,10 +892,6 @@ public class sync extends AppCompatActivity {
                     }
                     //   setAreaValue(area);
 
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -997,8 +900,6 @@ public class sync extends AppCompatActivity {
 
             }
         }
-
-
 
     }
 
