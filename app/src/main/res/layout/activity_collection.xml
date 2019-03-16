@@ -295,7 +295,18 @@
             android:layout_marginRight="20dp"
             android:background="@color/buttonColor"
             android:textColor="@color/fontColor"
-            android:text="Print" />
+            android:text="Customer Copy" />
+
+        <Button
+            android:id="@+id/btn_print_csr"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/buttonColor"
+            android:textColor="@color/fontColor"
+            android:text="Collector Copy" />
 
         <Button
             android:id="@+id/btn_histry"
