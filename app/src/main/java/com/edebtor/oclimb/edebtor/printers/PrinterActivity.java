@@ -102,7 +102,7 @@ public class PrinterActivity extends Activity {
 
 /******************************************************************************************************/
 
-Button button_scan,buttonPrint,btn_stop,btn_cansel;
+Button button_scan,buttonPrint,btn_stop,btn_return, btn_cancel;
 String print_string="";
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -117,7 +117,8 @@ String print_string="";
 		button_scan=findViewById(R.id.button_scan);
 		buttonPrint=findViewById(R.id.btn_test);
 		btn_stop=findViewById(R.id.btn_stop);
-		btn_cansel=findViewById(R.id.btn_cansel);
+		btn_return=findViewById(R.id.btn_return);
+		btn_cancel=findViewById(R.id.btn_cancel);
 
 
 
@@ -157,7 +158,20 @@ String print_string="";
 				btn_stop.setEnabled(false);
 			}
 		});
-		btn_cansel.setOnClickListener(new OnClickListener() {
+		btn_return.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				mService.stop();
+				button_scan.setEnabled(true);
+				buttonPrint.setEnabled(false);
+				btn_stop.setEnabled(false);
+
+				//Intent i = new Intent(PrinterActivity.this, main_menu.class); //commented to modify the code to return to loan detail page
+				Intent i = new Intent(PrinterActivity.this, collection.class);
+				startActivity(i);
+			}
+		});
+		btn_cancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				mService.stop();
