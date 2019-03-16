@@ -41,7 +41,7 @@ public class collection extends AppCompatActivity {
     public static String msg2;
     public static int cr_id;
     int crdit_id;
-    Button btn_print, btn_histry;
+    Button btn_print, btn_histry, btn_print_csr;
     EditText installment_text,last_payement_date,due_date,total_amount,sub_total,additional_amount,paid_amount,total_granted_amount,se_granted_amount,get_Pno1;
     Spinner getselectdate;
     //String installment_text,due_date,total_amount,sub_total,additional_amount,match_parent;
@@ -128,6 +128,7 @@ public class collection extends AppCompatActivity {
         });
 
         btn_print=findViewById(R.id.btn_print);
+        btn_print_csr = findViewById(R.id.btn_print_csr);
 
         btn_print.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,7 +184,7 @@ public class collection extends AppCompatActivity {
 
                             db.invoice_payments_data(idInvoice_Payments, Amount, AdditionalAmount, DateTime, PayFor, Credit_Invoice_idCredit_Invoice, user_idUser, Status, sync_status);
 
-                            Toast.makeText(collection.this, "Payment Success!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(collection.this, "Payment saved successfully!", Toast.LENGTH_SHORT).show();
 
                             // String insallment_p ="200";
                             String getcrdit_cust= crdit_manage.crdit_cust;
@@ -212,13 +213,14 @@ public class collection extends AppCompatActivity {
                                     " Total Paid : Rs." + get_PaidAmount + "\n Total Due : Rs." + get_due + "\n Amount Paid on the current day : Rs." + g_total_amount + " \n ----------------------------- \n Hotline - 071 986 20 62 \n \n   Powered by SaviMaga \n        071 986 20 62 \n";*/
 
                             msg1 = "\n\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Installment : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
-                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + dueAmount + "\n Additional amount : Rs." + extra +  " \n\n --------------- " + "\n Customer Signature" + " \n ----------------------------- \n Hotline - 071 234 56 78  \n \n   Powered by SaviMaga \n        071 234 56 78 \n";
+                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + get_due + "\n Additional amount : Rs." + extra +  " \n\n --------------- " + "\n Customer Signature" + " \n ----------------------------- \n   Hotline - 071 234 56 78  \n      Powered by SaviMaga \n        071 234 56 78 \n\n";
 
-                            msg2 = "\n\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Installment : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
-                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + dueAmount + "\n Additional amount : Rs." + extra + " \n ----------------------------- \n Hotline - 071 234 56 78  \n \n   Powered by SaviMaga \n        071 234 56 78  \n\n";
+//                            msg2 = "\n\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Installment : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
+//                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + get_due + "\n Additional amount : Rs." + extra + " \n ----------------------------- \n   Hotline - 071 234 56 78  \n      Powered by SaviMaga \n        071 234 56 78  \n\n";
 
 
-                            msg = msg1 + msg2;
+                            //msg = msg1 + msg2;
+                            msg = msg1;
                             // Intent i = new Intent(crdit_manage.this, PrinterActivity.class);
                             Intent ii = new Intent(collection.this, PrinterActivity.class);
 
@@ -237,6 +239,87 @@ public class collection extends AppCompatActivity {
             }
         });
 
+        //printing for CSR copy
+        btn_print_csr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                AlertDialog.Builder builder = new AlertDialog.Builder(collection.this);
+//                builder.setMessage("Do you want to save the payment?").setPositiveButton("Save", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String get_installment_text, get_last_payement_date, get_due_date, get_total_amount, get_sub_total, get_additional_amount, get_paid_amount;
+
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        Calendar cal = Calendar.getInstance();
+
+                        String curent_date = dateFormat.format(cal.getTime());
+
+                        //String DateTime =arr_user.getString("DateTime");
+                        String idInvoice_Payments = "1";
+                        String Amount = sub_total.getText().toString();
+                        String AdditionalAmount = additional_amount.getText().toString();
+                        String g_installment_text = installment_text.getText().toString();
+                        //String g_sub_total =sub_total.getText().toString();
+                        String g_total_amount = total_amount.getText().toString();
+
+                        String DateTime = dateFormat.format(cal.getTime());
+
+                        String PayFor = get_PayFor;
+                        String Credit_Invoice_idCredit_Invoice = String.valueOf(crdit_id);
+                        String user_idUser = LoginActivity.uid;
+                        String Status = "1";
+                        String sync_status = "1";
+
+
+                        if (Amount.equals("")) {
+                            Toast.makeText(collection.this, "Please Enter Sub Total.", Toast.LENGTH_SHORT).show();
+                        } else if (AdditionalAmount.equals("")) {
+                            Toast.makeText(collection.this, "Please Enter Additional Amount.", Toast.LENGTH_SHORT).show();
+                        } else if (PayFor.equals("")) {
+                            Toast.makeText(collection.this, "Please Enter PayFor.", Toast.LENGTH_SHORT).show();
+                        } else{
+
+
+                            db.invoice_payments_data(idInvoice_Payments, Amount, AdditionalAmount, DateTime, PayFor, Credit_Invoice_idCredit_Invoice, user_idUser, Status, sync_status);
+
+//                            Toast.makeText(collection.this, "Payment saved successfully!", Toast.LENGTH_SHORT).show();
+
+                            String getcrdit_cust= crdit_manage.crdit_cust;
+
+                            String total_Granted_Amount = total_granted_amount.getText().toString();
+                            System.out.println("total_Granted_Amount>>>>>> : " + total_Granted_Amount);
+
+                            double extraPaid = Double.parseDouble(g_total_amount) - Double.parseDouble(g_installment_text);
+                            String extra = String.format("%.2f", extraPaid);
+                            double totalPaidAmount = Double.parseDouble(AdditionalAmount) + Double.parseDouble(g_installment_text);
+                            String totalPaid = String.format("%.2f", totalPaidAmount);
+                            double totalDue = Double.parseDouble(total_Granted_Amount) - Double.parseDouble(totalPaid);
+                            String dueAmount = String.format("%.2f", totalDue);
+
+                            msg2 = "\n\n Savi Maga    \n " + curent_date + " \n Loan No : " + Credit_Invoice_idCredit_Invoice + "\n"+ getcrdit_cust +" \n ----------------------------- \n Installment : Rs." + g_installment_text + " \n Loan Amount : Rs." + get_GrantAmount + "\n Duration : " + get_duration + " \n ----------------------------- \n" +
+                                    " Total Paid : Rs." + totalPaid + "\n Total Due : Rs." + get_due + "\n Additional amount : Rs." + extra + " \n ----------------------------- \n   Hotline - 071 234 56 78  \n      Powered by SaviMaga \n        071 234 56 78  \n\n";
+
+
+                            msg = msg2;
+                            // Intent i = new Intent(crdit_manage.this, PrinterActivity.class);
+                            Intent ii = new Intent(collection.this, PrinterActivity.class);
+
+                            startActivity(ii);
+
+
+                        }
+
+
+                    //}
+//                }).setNegativeButton("Cancel",null) ;
+//                AlertDialog alt =   builder.create();
+//                alt.show();
+
+
+            }
+        });
 
         additional_amount.addTextChangedListener(new TextWatcher() {
             @Override
