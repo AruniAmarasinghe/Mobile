@@ -35,9 +35,6 @@ public class Database extends SQLiteOpenHelper{
     private static final String sync_status = "sync_status";
     private static final String CollectionArea_idCollectionArea = "CollectionArea_idCollectionArea";
 
-
-
-
     //table
     private static final String User = "User";
     private static final String collection_area_user = "collection_area_user";
@@ -66,8 +63,6 @@ public class Database extends SQLiteOpenHelper{
     private static final String Email = "Email";
 
 
-
-
     // collection_area_user TABLE
     private static final String idCollection_Area_User = "idCollection_Area_User";
 
@@ -91,16 +86,12 @@ public class Database extends SQLiteOpenHelper{
     private static final String Settled = "Settled";
     private static final String DateTime = "DateTime";
 
-
-
     //invoice_payments TABLE
-
     private static final String idInvoice_Payments = "idInvoice_Payments";
     private static final String Amount = "Amount";
     private static final String AdditionalAmount = "AdditionalAmount";
     private static final String PayFor = "PayFor";
     private static final String payement_DateTime = "payement_DateTime";
-
 
     //CollectorExpenses Table
 
@@ -153,8 +144,6 @@ public class Database extends SQLiteOpenHelper{
 
 
 
-
-
     //String CREATE_COMMON_DATA_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_COMMON_DATA
     //        + "(" + KEY_ID + " INTEGER PRIMARY KEY,"+KEY_TIME+" TEXT,"  + COMMON_DATA_NAME
      //       + " TEXT,"+COMMON_DATA_VALUE + " TEXT," +IS_BAKUP+" INTEGER DEFAULT 0);";
@@ -175,7 +164,6 @@ public class Database extends SQLiteOpenHelper{
     db.execSQL(Create_debitors);
     db.execSQL(Creat_CollectorExpenses);
 
-
     }
 
     @Override
@@ -193,10 +181,6 @@ public class Database extends SQLiteOpenHelper{
         db.execSQL("DELETE FROM invoice_payments");
         db.execSQL("DELETE FROM debitors");
         //db.execSQL("DELETE FROM CollectorExpenses");
-
-
-
-
 
 
        // System.out.println("aaaaaaaaaaaaaaaaaaaa111");
@@ -262,8 +246,6 @@ public class Database extends SQLiteOpenHelper{
         values.put(CollectionArea_idCollectionArea,d_CollectionArea_idCollectionArea);
         values.put(IdUsera,d_IdUsera);
 
-
-
         db.insertWithOnConflict(collection_area_user, null, values,SQLiteDatabase.CONFLICT_REPLACE);
         db.close();
     }
@@ -277,13 +259,10 @@ public class Database extends SQLiteOpenHelper{
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-
         ContentValues values = new ContentValues();
         values.put(idCollectionArea,d_idCollectionArea);
         values.put(CollectionArea,d_collectionarea);
         values.put(Status,d_Status);
-
-
 
         db.insertWithOnConflict(collection_area, null, values,SQLiteDatabase.CONFLICT_REPLACE);
         db.close();
@@ -292,7 +271,6 @@ public class Database extends SQLiteOpenHelper{
     public void sync_data_data(String d_idsync, String d_sync_status){
 
         SQLiteDatabase db = this.getWritableDatabase();
-
 
         ContentValues values = new ContentValues();
         values.put(idsync,d_idsync);
@@ -310,8 +288,6 @@ public class Database extends SQLiteOpenHelper{
             , String d_idCollection_Area_User, String d_IdUsera, String d_Status, String d_sync_status){
 
         SQLiteDatabase db = this.getWritableDatabase();
-
-
         ContentValues values = new ContentValues();
         values.put(idCredit_Invoice,d_idCredit_Invoice);
         values.put(TotalAmount,d_TotalAmount);
@@ -341,8 +317,6 @@ public class Database extends SQLiteOpenHelper{
                                       String d_PayFor, String d_idCredit_Invoice, String d_IdUsera, String d_Status, String d_sync_status){
 
         SQLiteDatabase db = this.getWritableDatabase();
-
-
         ContentValues values = new ContentValues();
       //  values.put(idInvoice_Payments,d_idInvoice_Payments);
         values.put(Amount,d_Amount);
@@ -366,8 +340,6 @@ public class Database extends SQLiteOpenHelper{
                               String d_Address2, String d_Pno1, String d_Pno2, String d_Email, String d_Status, String d_sync_status){
 
         SQLiteDatabase db = this.getWritableDatabase();
-
-
         ContentValues values = new ContentValues();
         values.put(idDebitors,d_idDebitors);
         values.put(NIC,d_NIC);
@@ -395,10 +367,6 @@ public class Database extends SQLiteOpenHelper{
        // HashMap<String, String> map = new HashMap<String, String>();
 
         ArrayList<two_item> list=new ArrayList<two_item>();
-
-
-
-
         //  String query = "SELECT * FROM " + collection_area ;
         String query = "SELECT * FROM "+collection_area_user+" u JOIN "+ collection_area+" c ON u. "+CollectionArea_idCollectionArea+" =c. "+idCollectionArea+" WHERE "+IdUsera+"="+ uid ;
 
@@ -439,9 +407,6 @@ public class Database extends SQLiteOpenHelper{
 
         ArrayList<two_item> list=new ArrayList<two_item>();
 
-
-
-
         // String query = "SELECT * FROM " + collection_area ;
         String query = "SELECT d."+Fname+",d."+Lname+", i."+idCredit_Invoice+" FROM "+ credit_invoice +" i JOIN "+ debitors +" d ON i."+idDebitors+" = d. "+idDebitors+" WHERE i."+idCollection_Area_User+" = "+areaid+" AND i."+Status+" ='1' AND i."+Settled+"='0'";
 
@@ -464,8 +429,6 @@ public class Database extends SQLiteOpenHelper{
                 //  map.put("id", id);
                 // map.put("value", value);
             } while (cursor.moveToNext());
-
-
         }
         cursor.close();
         db.close();
@@ -497,9 +460,6 @@ public class Database extends SQLiteOpenHelper{
         // HashMap<String, String> map = new HashMap<String, String>();
 
         ArrayList<two_item> list=new ArrayList<two_item>();
-
-
-
 
         // String query = "SELECT * FROM " + collection_area ;
         String query = "SELECT "+Fname+", "+Lname+", "+idDebitors+" FROM "+ debitors +" WHERE "+Status+" ='1' ";
@@ -536,9 +496,6 @@ public class Database extends SQLiteOpenHelper{
         // HashMap<String, String> map = new HashMap<String, String>();
 
         ArrayList<two_item> list=new ArrayList<two_item>();
-
-
-
 
         //  String query = "SELECT * FROM " + collection_area ;
         String query = "SELECT * FROM "+ collection_area+" WHERE "+Status+"= '1'" ;
@@ -588,8 +545,8 @@ public class Database extends SQLiteOpenHelper{
         //  String query1 = "SELECT * FROM "+debitors+" i JOIN "+credit_invoice+" c ON i."+idDebitors+" = c."+idDebitors+ " WHERE c."+idCredit_Invoice+"="+crid;
 
         // String query = "SELECT * FROM " + collection_area ;
-        //Modified
-        String query = "SELECT * FROM "+invoice_payments+" i FULL OUTER JOIN "+credit_invoice+" c ON i."+idCredit_Invoice+" = c."+idCredit_Invoice+" \n" +
+        //Modified JOIN to LEFT JOIN
+        String query = "SELECT * FROM "+invoice_payments+" i LEFT JOIN "+credit_invoice+" c ON i."+idCredit_Invoice+" = c."+idCredit_Invoice+" \n" +
                 "WHERE c."+idCredit_Invoice+"="+crid+"  AND c."+Status+"='1' AND i."+Status+" ='1' ORDER BY i."+payement_DateTime+" DESC LIMIT 1; " ;
 
        // System.out.println("get_DailyEqualPayment "+query1);
@@ -598,9 +555,6 @@ public class Database extends SQLiteOpenHelper{
 
         Cursor cursor = db.rawQuery(query, null);
         Cursor cursor1 = db.rawQuery(query1, null);
-
-
-
 
         if (cursor1.getCount() > 0) {
             cursor1.moveToFirst();
@@ -691,8 +645,6 @@ public class Database extends SQLiteOpenHelper{
                 //  map.put("id", id);
                 // map.put("value", value);
 
-
-
             } while (cursor.moveToNext());
 
 
@@ -761,11 +713,7 @@ public class Database extends SQLiteOpenHelper{
         // HashMap<String, String> map = new HashMap<String, String>();
 
         // ArrayList<two_item> list=new ArrayList<two_item>();
-
-
-
-
-
+        //modified// LEFT JOIN to FULL OUTER//
 
         //  String query = "SELECT * FROM " + collection_area ;
         String query = "SELECT * FROM "+invoice_payments+" i LEFT JOIN "+credit_invoice+" c ON i."+idCredit_Invoice+" = c."+idCredit_Invoice+" \n" +
@@ -803,8 +751,6 @@ public class Database extends SQLiteOpenHelper{
                     Date last_pament = dateFormat.parse(get_DateTime);
                     Date paset_curent_date = dateFormat.parse(curent_date);
 
-
-
                     long diffInMillies = Math.abs(paset_curent_date.getTime() - last_pament.getTime());
                     long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
@@ -831,8 +777,6 @@ public class Database extends SQLiteOpenHelper{
 
                 //  map.put("id", id);
                 // map.put("value", value);
-
-
 
             } while (cursor.moveToNext());
 
@@ -865,13 +809,7 @@ public class Database extends SQLiteOpenHelper{
             cursor.moveToFirst();
 
             do{
-
-
-
-
                 String id = cursor.getString(cursor.getColumnIndex(idInvoice_Payments));
-
-
 
                 Double getAdditionalAmount =cursor.getDouble(cursor.getColumnIndex(AdditionalAmount));
                 Double get_Amount =cursor.getDouble(cursor.getColumnIndex(Amount));
@@ -977,8 +915,6 @@ public class Database extends SQLiteOpenHelper{
                 cursor1.moveToFirst();
 
                 do {
-
-
                     Double get_amount = cursor1.getDouble(cursor1.getColumnIndex(Amount));
 
 
@@ -994,9 +930,6 @@ public class Database extends SQLiteOpenHelper{
                 } while (cursor1.moveToNext());
             }
 
-
-
-
         cursor.close();
         db.close();
         return list;
@@ -1004,13 +937,8 @@ public class Database extends SQLiteOpenHelper{
 
 
 
-
-
-
     public String getuserDily_Payment_tot(int get_uid) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-
 
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
@@ -1042,13 +970,6 @@ public class Database extends SQLiteOpenHelper{
 
             do{
 
-
-
-
-
-
-
-
                  getAdditionalAmount =cursor.getDouble(cursor.getColumnIndex(AdditionalAmount));
                  get_Amount =cursor.getDouble(cursor.getColumnIndex(Amount));
 
@@ -1076,9 +997,7 @@ public class Database extends SQLiteOpenHelper{
             do{
 
                 get_exAmount =cursor1.getDouble(cursor1.getColumnIndex(Amount));
-
                 get_extot =   get_exAmount + get_extot;
-
                 //System.out.println("ddddooddooooooo12-"+get_extot);
             } while (cursor1.moveToNext());
 
@@ -1091,8 +1010,6 @@ public class Database extends SQLiteOpenHelper{
     }
 
 
-
-
     public String user_login(String un,String pass) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -1100,13 +1017,11 @@ public class Database extends SQLiteOpenHelper{
         un = un.replace(" ", "");
         pass = pass.replace(" ", "");
         //  String query = "SELECT * FROM "+ invoice_payments+" WHERE "+Status+"= '1'" ;
-
        // String query = "SELECT * FROM "+User +" WHERE "+Uname+" ='"+un+"' AND "+Pass+" ='"+pass+"' "+Status+"= '1'  " ;
 
         String query = "SELECT * FROM "+User+" WHERE "+Uname+" ='"+un+"' AND "+Pass+" ='"+pass+"' "  ;
 
        // System.out.println("ddddooooooooo2-"+query);
-
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.getCount() > 0) {
@@ -1117,11 +1032,6 @@ public class Database extends SQLiteOpenHelper{
 
                 login_result = cursor.getString(cursor.getColumnIndex(IdUsera));
                // System.out.println("ddddooooooooo2-"+cursor.getString(cursor.getColumnIndex(IdUsera)));
-
-
-
-
-
 
             } while (cursor.moveToNext());
 
