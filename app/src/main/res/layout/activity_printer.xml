@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:background="#014924"
         android:text="Scan"
         android:textColor="@color/fontColor"/>
@@ -27,6 +27,17 @@
         android:text="Print"
         android:textColor="@color/fontColor"/>
 
+    <!--<Button-->
+        <!--android:id="@+id/btn_test1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_marginTop="40dp"-->
+        <!--android:background="#014924"-->
+        <!--android:text="Collector Print"-->
+        <!--android:textColor="@color/fontColor"/>-->
+
     <Button
         android:id="@+id/btn_stop"
         android:layout_width="match_parent"
@@ -39,7 +50,18 @@
         android:textColor="@color/fontColor"/>
 
     <Button
-        android:id="@+id/btn_cansel"
+        android:id="@+id/btn_return"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="#014924"
+        android:text="Return"
+        android:textColor="@color/fontColor"/>
+
+    <Button
+        android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
