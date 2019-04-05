@@ -235,8 +235,8 @@ public class main_menu extends AppCompatActivity {
 
                 String uid = LoginActivity.uid;
 
-                //Uri uri = Uri.parse("http://g5.creditlanka.com/index.php?login_token="+uid);
-                Uri uri = Uri.parse("http://savimaga.com/app/index.php?login_token="+uid);
+                Uri uri = Uri.parse("http://g5.creditlanka.com/index.php?login_token="+uid);
+                //Uri uri = Uri.parse("http://savimaga.com/app/index.php?login_token="+uid);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
