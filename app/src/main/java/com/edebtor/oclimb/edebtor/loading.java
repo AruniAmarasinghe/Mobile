@@ -9,12 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+//import android.widget.Toast;
 
 import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Model.payment_de;
-import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
+//import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
 import com.edebtor.oclimb.edebtor.utill.ConnectionDetector;
 import com.edebtor.oclimb.edebtor.utill.Database;
 
@@ -193,23 +193,21 @@ public class loading extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                //String uid = LoginActivity.uid;
+
                 String token="525252";
-                //System.out.println("uid " + uid);
+
                 String merchantURL = commo.BASE_URL+"user_de.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
+
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                // System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -220,7 +218,6 @@ public class loading extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
 
 
                 try {

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.AsyncTask;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
+//import android.os.AsyncTask;
+//import android.support.annotation.Nullable;
+//import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,21 +16,21 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
+//import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Model.two_item;
 import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
-import com.edebtor.oclimb.edebtor.printers.PrinterActivity;
+//import com.edebtor.oclimb.edebtor.printers.PrinterActivity;
 import com.edebtor.oclimb.edebtor.utill.Database;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+//import org.json.JSONArray;
+//import org.json.JSONException;
+//import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+//import java.util.HashMap;
+//import java.util.Iterator;
+//import java.util.List;
 
 public class crdit_manage extends AppCompatActivity {
 
@@ -164,7 +164,6 @@ public class crdit_manage extends AppCompatActivity {
 
         getArea_value.setAdapter(spinnerArrayAdapter);
 
-        //Toast.makeText(crdit_manage.this, "Load area", Toast.LENGTH_SHORT).show();
     }
 
     //==========================================================================================
@@ -182,7 +181,6 @@ public class crdit_manage extends AppCompatActivity {
 
         getDebitor_value.setAdapter(spinnerArrayAdapter);
 
-        //Toast.makeText(crdit_manage.this, "Load getDebitor value", Toast.LENGTH_SHORT).show();
     }
 
     //==========================================================================================
@@ -272,9 +270,9 @@ public class crdit_manage extends AppCompatActivity {
 
         try {
             int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("pppppppppp");
+
             ArrayList<two_item> list = db.getUserArea(uid);
-            //System.out.println("pppppppppp");
+
 
             if(list.size() > 0) {
 
@@ -283,15 +281,12 @@ public class crdit_manage extends AppCompatActivity {
                 int i = 0;
 
                 for (two_item t : list) {
-                    //System.out.println("--aaaaaa---" + t.getValue());
 
-
-                    //     System.out.println("--aaaaaa---"+i);
                     area_ids[i] = t.getId();
                     area[i] = t.getValue();
-                    //  System.out.println("--aaaaaa---"+i);
+
                     i++;
-                    // Log.i("Value of element "+i, String.valueOf(list.get(i)));
+
                 }
                 setAreaValue(area);
             }else{
@@ -299,7 +294,6 @@ public class crdit_manage extends AppCompatActivity {
                 //setDebitorValue(debetors);
                 setAreaValue(area);
             }
-            //System.out.println("zzzzz-");
 
 
         }catch (Exception e){

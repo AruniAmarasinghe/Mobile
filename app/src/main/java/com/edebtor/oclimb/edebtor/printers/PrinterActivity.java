@@ -2,10 +2,10 @@ package com.edebtor.oclimb.edebtor.printers;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
+//import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.DialogInterface;
+//import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,13 +13,13 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
+//import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.edebtor.oclimb.edebtor.R;
 import com.edebtor.oclimb.edebtor.collection;
-import com.edebtor.oclimb.edebtor.loan_apply;
+//import com.edebtor.oclimb.edebtor.loan_apply;
 import com.edebtor.oclimb.edebtor.main_menu;
 
 import java.io.UnsupportedEncodingException;

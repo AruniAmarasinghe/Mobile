@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
-
+//
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,7 +64,7 @@ public class debitors_reg extends AppCompatActivity {
                 builder.setMessage("Customer Register").setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //this.notify();
+
 
                         g_nic = nic.getText().toString();
                         g_fname = fname.getText().toString();
@@ -75,7 +75,7 @@ public class debitors_reg extends AppCompatActivity {
                         g_pno1 = pno1.getText().toString();
                         g_pno2 = pno2.getText().toString();
 
-                        //  System.out.println("mmmmmmmmmmmmm"+g_nic);
+
 
                         if(g_nic.equals("")){
                             Toast.makeText(debitors_reg.this, "Please enter the NIC.", Toast.LENGTH_SHORT).show();
@@ -186,11 +186,11 @@ public class debitors_reg extends AppCompatActivity {
 
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
+
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;

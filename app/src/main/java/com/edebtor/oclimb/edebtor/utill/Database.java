@@ -5,23 +5,23 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+//import android.util.Log;
 
 import com.edebtor.oclimb.edebtor.Model.credit_report;
 import com.edebtor.oclimb.edebtor.Model.payment_de;
 import com.edebtor.oclimb.edebtor.Model.two_item;
 
-import java.lang.reflect.Array;
+//import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+//import java.time.LocalDateTime;
+//import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+//import java.util.HashMap;
+//import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 

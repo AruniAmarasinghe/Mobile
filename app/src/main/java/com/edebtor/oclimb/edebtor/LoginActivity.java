@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Model.APIRespose;
-import com.edebtor.oclimb.edebtor.Model.credit_report;
+//import com.edebtor.oclimb.edebtor.Model.credit_report;
 import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
 import com.edebtor.oclimb.edebtor.utill.Database;
 
-import org.w3c.dom.Text;
-import javax.sql.CommonDataSource;
+//import org.w3c.dom.Text;
+//import javax.sql.CommonDataSource;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

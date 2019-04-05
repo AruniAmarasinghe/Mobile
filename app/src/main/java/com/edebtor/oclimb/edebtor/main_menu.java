@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.net.Uri;
 //import com.edebtor.oclimb.edebtor.main_menu.webkit.WebView;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Toast;
+//import android.webkit.WebView;
+//import android.webkit.WebViewClient;
+//import android.widget.Toast;
 //import android.app.ProgressDialog;
 
 
