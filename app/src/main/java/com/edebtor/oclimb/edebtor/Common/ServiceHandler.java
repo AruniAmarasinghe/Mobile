@@ -62,19 +62,6 @@ public class ServiceHandler {
 
         try {
 
-            if(isSSLConnection) {
-
-
-
-
-
-
-            }
-
-
-
-
-
             sbParams = new StringBuilder();
             int i = 0;
             for (String key : params.keySet()) {
@@ -94,11 +81,6 @@ public class ServiceHandler {
                 }
                 i++;
             }
-
-
-
-
-
 
             if(isSSLConnection) {
 
@@ -158,7 +140,6 @@ public class ServiceHandler {
                     sslConn.setConnectTimeout(timeOut);
                     sslConn.connect();
 
-
                 }
 
                 conn=sslConn;
@@ -167,11 +148,7 @@ public class ServiceHandler {
                 if (method == POST) {
 
                     urlObj = new URL(url);
-
                     conn = (HttpURLConnection) urlObj.openConnection();
-
-
-
                     conn.setDoOutput(true);
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Accept-Charset", charset);
@@ -179,8 +156,6 @@ public class ServiceHandler {
                     int connectionTimeOut = timeOut - readTimeOut;
                     conn.setReadTimeout(readTimeOut * 1000);
                     conn.setConnectTimeout(connectionTimeOut * 1000);
-
-
 
                     conn.connect();
                     paramsString = sbParams.toString();
@@ -198,24 +173,16 @@ public class ServiceHandler {
                         url += "?" + sbParams.toString();
                     }
 
-
                     urlObj = new URL(url);
 
-
                     conn = (HttpURLConnection) urlObj.openConnection();
-
-
                     conn.setDoOutput(false);
                     conn.setRequestMethod("GET");
                     conn.setRequestProperty("Accept-Charset", charset);
                     conn.setConnectTimeout(timeOut);
                     conn.connect();
 
-
                 }
-
-
-
             }
             respondCode = conn.getResponseCode();
             InputStream in = new BufferedInputStream(conn.getInputStream());
@@ -236,15 +203,6 @@ public class ServiceHandler {
             e.printStackTrace();
             System.out.println("ttttttt ssl: " + e.getMessage());
         }
-
-
-
-
-
-
-
-
-
         // return JSON Object
         return respond;
     }
@@ -267,9 +225,6 @@ public class ServiceHandler {
     public void setReadTimeOut(int readTimeOut) {
         this.readTimeOut = readTimeOut;
     }
-
-//https://stackoverflow.com/questions/34293757/how-to-use-httpsurlconnection-instead-of-defaulthttpclient
-//answer 3
 
 
 }

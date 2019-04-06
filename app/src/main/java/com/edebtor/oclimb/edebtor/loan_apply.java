@@ -57,7 +57,6 @@ public class loan_apply extends AppCompatActivity {
 
         Area_value = (Spinner) findViewById(R.id.select_area);
         Debitor_value = (Spinner) findViewById(R.id.select_debetor);
-
         g1_nic = (EditText) findViewById(R.id.g1_nic);
         g1_faname = (EditText) findViewById(R.id.g1_faname);
         g1_laname = (EditText) findViewById(R.id.g1_laname);
@@ -83,12 +82,10 @@ public class loan_apply extends AppCompatActivity {
 
                 }
 
-                // System.out.println("crdit_ids[pos] download " + crdit_ids[pos]);
-                // Toast.makeText(crdit_manage.this, crdit_ids[pos], Toast.LENGTH_SHORT).show();
 
             }
             public void onNothingSelected(AdapterView<?> parent) {
-                //  Toast.makeText(crdit_manage.this, "Spinner1: unselected", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -99,16 +96,12 @@ public class loan_apply extends AppCompatActivity {
                 if(Debetor_ids != null) {
                     getDebitor_value = Debetor_ids[pos];
 
-
                 }
 
 
-                // System.out.println("crdit_ids[pos] download " + crdit_ids[pos]);
-                // Toast.makeText(crdit_manage.this, crdit_ids[pos], Toast.LENGTH_SHORT).show();
-
             }
             public void onNothingSelected(AdapterView<?> parent) {
-                //  Toast.makeText(crdit_manage.this, "Spinner1: unselected", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -257,7 +250,6 @@ public class loan_apply extends AppCompatActivity {
                         double total_interest = ((((g_apply_amount / 100) * g_interest_val) / 30) * g_days) + g_apply_amount;
                         double daily_payment_val = (((((g_apply_amount / 100) * g_interest_val) / 30) * g_days) + g_apply_amount) / g_days;
 
-                        // System.out.println("qqqqw1--"+daily_payment_val);
 
                         String st_daily_payment_val = String.valueOf(daily_payment_val);
                         String st_total_interest = String.valueOf(total_interest);
@@ -277,8 +269,6 @@ public class loan_apply extends AppCompatActivity {
             }
         });
 
-
-        //-------------------------------------------------------------------------------
 
         daily_payment.addTextChangedListener(new TextWatcher() {
             @Override
@@ -302,7 +292,6 @@ public class loan_apply extends AppCompatActivity {
 
                         double total_interest = ((((g_apply_amount / 100) * interest_val) / 30) * g_days) + g_apply_amount;
 
-                        // System.out.println("qqqqw1--" + String.valueOf(interest_val));
 
                         String st_interest_val = String.valueOf(interest_val);
                         String st_total_interest = String.valueOf(total_interest);
@@ -317,8 +306,6 @@ public class loan_apply extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable daily_payment_val) {
 
-
-
             }
         });
 
@@ -327,13 +314,10 @@ public class loan_apply extends AppCompatActivity {
 
     private void setAreaValue(String[] areac) {
 
-        // System.out.println("oooook");
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
                 context, android.R.layout.simple_spinner_item, areac
         );
 
-
-        //  spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
         Area_value.setAdapter(spinnerArrayAdapter);
@@ -351,9 +335,6 @@ public class loan_apply extends AppCompatActivity {
         );
 
 
-        //     spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
         Debitor_value.setAdapter(spinnerArrayAdapter);
 
         Toast.makeText(loan_apply.this, "Load getDebtor value", Toast.LENGTH_SHORT).show();
@@ -365,13 +346,9 @@ public class loan_apply extends AppCompatActivity {
     private void DownloadArea(){
 
         try {
-            //  int uid = Integer.parseInt(LoginActivity.uid);
-            // System.out.println("pppppppppp");
-            // ArrayList<two_item> list = db.getAllArea();
-            //   System.out.println("pppppppppp");
 
             int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("pppppppppp");
+
             ArrayList<two_item> list = db.getUserArea(uid);
 
             String[] area = new String[list.size()];
@@ -379,18 +356,14 @@ public class loan_apply extends AppCompatActivity {
             int i=0;
 
             for(two_item t:list) {
-                //   System.out.println("--aaaaaa---"+t.getValue());
 
-
-                //     System.out.println("--aaaaaa---"+i);
                 area_ids[i]=t.getId();
                 area[i]=t.getValue();
-                //  System.out.println("--aaaaaa---"+i);
+
                 i++;
-                // Log.i("Value of element "+i, String.valueOf(list.get(i)));
+
             }
 
-            //System.out.println("zzzzz-");
             setAreaValue(area);
 
         }catch (Exception e){
@@ -402,37 +375,26 @@ public class loan_apply extends AppCompatActivity {
     private void DownloadDebitor(){
 
         try {
-            //   int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("pppppppppp1");
+
             ArrayList<two_item> list = db.getAlDebetor();
-            //  System.out.println("pppppppppp");
-
-            // System.out.println("pppppppppp1---"+list.size());
-
-
 
             if(list.size() > 0) {
                 String[] debetors = new String[list.size()];
                 Debetor_ids = new String[list.size()];
                 int i=0;
                 for (two_item t : list) {
-                    //   System.out.println("--aaaaaa1---"+t.getValue());
 
-
-                    //     System.out.println("--aaaaaa---"+i);
                     Debetor_ids[i] = t.getId();
                     debetors[i] = t.getValue();
-                    //  System.out.println("--aaaaaa---"+i);
+
                     i++;
-                    // Log.i("Value of element "+i, String.valueOf(list.get(i)));
+
                 }
                 setDebitorValue(debetors);
             }else{
                 String[] debetors = new String[]{"No debtor in area"};
                 setDebitorValue(debetors);
             }
-
-            //System.out.println("zzzzz-");
 
 
         }catch (Exception e){
@@ -441,24 +403,13 @@ public class loan_apply extends AppCompatActivity {
     }
 
 
-
-
-//==========================================================================================
-
-
-
     class DownloadApply_loan extends AsyncTask<String, Void, JSONObject>
 
     {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
 
             super.onPreExecute();
 
@@ -467,8 +418,7 @@ public class loan_apply extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                // String uid = LoginActivity.uid;
-                // System.out.println("area_id " + area_id);
+
                 String token="525252";
                 String uid =LoginActivity.uid;
                 String merchantURL = commo.BASE_URL+"apply_loan.php";
@@ -485,9 +435,6 @@ public class loan_apply extends AppCompatActivity {
 
                 params.put("idArea", getArea_value);
                 params.put("idUser", uid);
-
-
-
 
                 params.put("g1fname", get_g1_faname);
                 params.put("g1lname", get_g1_laname);
@@ -506,13 +453,8 @@ public class loan_apply extends AppCompatActivity {
                 params.put("g2address2", get_g2_address2);
                 params.put("g2nic", get_g2_nic);
 
-
-
-
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                //System.out.println("ttttt download " + json);
-
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
@@ -536,12 +478,10 @@ public class loan_apply extends AppCompatActivity {
 
                     if(error){
                         String errormsg = json_object.getString("error_msg");
-                        //  String[] debetors = new String[]{"No debitor in area"};
 
                         Toast.makeText(loan_apply.this, "Loan Apply Failed.", Toast.LENGTH_SHORT).show();
 
                     }else {
-                        //Log.d("error_val",error+" "+errormsg);
 
                         String errormsg = json_object.getString("loan_de");
 
@@ -552,29 +492,8 @@ public class loan_apply extends AppCompatActivity {
                         Intent i = new Intent(loan_apply.this, main_menu.class);
                         startActivity(i);
 
-                      /*  JSONArray arr = json_object.getJSONArray("get_debetor");
-                        String[] debetors = new String[arr.length()];*/
-                        /*crdit_ids = new String[arr.length()];
-                        int[] ids = new int[arr.length()];
-*/
-
-                        /*for (int i = 0; i < arr.length(); i++) {
-                            JSONObject getdebetors = arr.getJSONObject(i);
-                            debetors[i] = getdebetors.getString("debetor");
-                            crdit_ids[i] = getdebetors.getString("id");
-                            //  Log.d("assss-----------",aria.getString("Area"));
-
-                        }*/
-
 
                     }
-
-
-
-
-
-
-
 
                 } catch (JSONException e) {
 

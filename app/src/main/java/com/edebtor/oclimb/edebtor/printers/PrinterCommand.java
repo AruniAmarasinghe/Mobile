@@ -1,15 +1,11 @@
 package com.edebtor.oclimb.edebtor.printers;
 
 import java.io.UnsupportedEncodingException;
-
 import zj.com.customize.sdk.Other;
 
 public class PrinterCommand {
 
-    /**
-     * 打印机初始化
-     * @return
-     */
+
     public static byte[] POS_Set_PrtInit(){
 
         byte[] data = Other.byteArraysToBytes(new byte[][] {
@@ -18,10 +14,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 打印并换行
-     * @return
-     */
+
     public static byte[] POS_Set_LF(){
         byte[] data = Other.byteArraysToBytes(new byte[][] {
                 Command.LF});
@@ -29,11 +22,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 打印并走纸 (0~255)
-     * @param feed
-     * @return
-     */
+
     public static byte[] POS_Set_PrtAndFeedPaper(int feed){
         if(feed > 255 | feed < 0)
             return null;
@@ -46,10 +35,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 打印自检页
-     * @return
-     */
+
     public static byte[] POS_Set_PrtSelfTest(){
 
         byte[] data = Other.byteArraysToBytes(new byte[][]{
@@ -58,12 +44,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 蜂鸣指令
-     * @param m  蜂鸣次数
-     * @param t  每次蜂鸣的时间
-     * @return
-     */
+
     public static byte[] POS_Set_Beep(int m, int t){
 
         if((m<1 || m>9) | (t<1 || t>9))
@@ -78,11 +59,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 切刀指令(走纸到切刀位置并切纸)
-     * @param cut  0~255
-     * @return
-     */
+
     public static byte[] POS_Set_Cut(int cut){
         if(cut>255 | cut < 0)
             return null;
@@ -94,13 +71,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 钱箱指令
-     * @param nMode
-     * @param nTime1
-     * @param nTime2
-     * @return
-     */
+
     public static byte[] POS_Set_Cashbox(int nMode, int nTime1, int nTime2){
 
         if((nMode<0 || nMode>1) | nTime1<0 | nTime1 >255 | nTime2 < 0 | nTime2 > 255)
@@ -115,11 +86,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置绝对打印位置
-     * @param absolute
-     * @return
-     */
+
     public static byte[] POS_Set_Absolute(int absolute){
         if(absolute >65535 | absolute <0)
             return null;
@@ -133,11 +100,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置相对打印位置
-     * @param relative
-     * @return
-     */
+
     public static byte[] POS_Set_Relative(int relative){
         if(relative<0 | relative>65535)
             return null;
@@ -151,11 +114,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置左边距
-     * @param left
-     * @return
-     */
+
     public static byte[] POS_Set_LeftSP(int left){
         if(left > 255 | left < 0)
             return null;
@@ -169,11 +128,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置对齐模式
-     * @param align
-     * @return
-     */
+
     public static byte[] POS_S_Align(int align) {
         if ((align < 0 || align > 2) | (align <48 || align >50))
             return null;
@@ -183,11 +138,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置打印区域宽度
-     * @param width
-     * @return
-     */
+
     public static byte[] POS_Set_PrintWidth(int width){
         if(width<0 | width>255)
             return null;
@@ -201,21 +152,14 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置默认行间距
-     * @return
-     */
+
     public static byte[] POS_Set_DefLineSpace(){
 
         byte[] data =  Command.ESC_Two;
         return data;
     }
 
-    /**
-     * 设置行间距
-     * @param space
-     * @return
-     */
+
     public static byte[] POS_Set_LineSpace(int space){
         if(space<0 | space > 255)
             return null;
@@ -228,11 +172,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 选择字符代码页
-     * @param page
-     * @return
-     */
+
     public static byte[] POS_Set_CodePage(int page){
         if(page > 255)
             return null;
@@ -246,15 +186,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 打印文本文档
-     * @param pszString  	要打印的字符串
-     * @param encoding   	打印字符对应编码
-     * @param codepage      设置代码页(0--255)
-     * @param nWidthTimes   倍宽(0--4)
-     * @param nHeightTimes  倍高(0--4)
-     * @param nFontType     字体类型(只对Ascii码有效)(0,1 48,49)
-     */
+
     public static byte[] POS_Print_Text(String pszString, String encoding, int codepage,
                                         int nWidthTimes, int nHeightTimes, int nFontType) {
 
@@ -290,11 +222,7 @@ public class PrinterCommand {
         }
     }
 
-    /**
-     * 加粗指令(最低位为1有效)
-     * @param bold
-     * @return
-     */
+
     public static byte[] POS_Set_Bold(int bold){
 
         Command.ESC_E[2] = (byte)bold;
@@ -306,11 +234,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置倒置打印模式(当最低位为1时有效)
-     * @param brace
-     * @return
-     */
+
     public static byte[] POS_Set_LeftBrace(int brace){
 
         Command.ESC_LeftBrace[2] = (byte)brace;
@@ -320,11 +244,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置下划线
-     * @param line
-     * @return
-     */
+
     public static byte[] POS_Set_UnderLine(int line){
 
         if((line<0 || line>2))
@@ -339,11 +259,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 选择字体大小(倍高倍宽)
-     * @paramsize
-     * @return
-     */
+
     public static byte[] POS_Set_FontSize(int size1, int size2){
         if(size1<0 | size1>7 | size2<0 | size2>7)
             return null;
@@ -357,11 +273,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置反显打印
-     * @param inverse
-     * @return
-     */
+
     public static byte[] POS_Set_Inverse(int inverse){
 
         Command.GS_B[2] = (byte)inverse;
@@ -373,11 +285,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 设置旋转90度打印
-     * @param rotate
-     * @return
-     */
+
     public static byte[] POS_Set_Rotate(int rotate){
         if(rotate<0 || rotate>1)
             return null;
@@ -388,11 +296,7 @@ public class PrinterCommand {
         return data;
     }
 
-    /**
-     * 选择字体字型
-     * @param font
-     * @return
-     */
+
     public static byte[] POS_Set_ChoseFont(int font){
         if(font > 1 | font < 0)
             return null;
@@ -405,15 +309,7 @@ public class PrinterCommand {
 
     }
 
-//***********************************以下函数为公开函数***********************************************************//
-    /**
-     * 二维码打印函数
-     * @param str                     打印二维码数据
-     * @param nVersion				      二维码类型
-     * @param nErrorCorrectionLevel   纠错级别
-     * @param nMagnification          放大倍数
-     * @return
-     */
+
     public static byte[] getBarCommand(String str, int nVersion, int nErrorCorrectionLevel,
                                        int nMagnification){
 
@@ -448,16 +344,7 @@ public class PrinterCommand {
         return command;
     }
 
-    /**
-     * 打印一维条码
-     * @param str                   打印条码字符
-     * @param nType					条码类型(65~73)
-     * @param nWidthX				条码宽度
-     * @param nHeight				条码高度
-     * @param nHriFontType			HRI字型
-     * @param nHriFontPosition		HRI位置
-     * @return
-     */
+
     public static byte[] getCodeBarCommand(String str, int nType, int nWidthX, int nHeight,
                                            int nHriFontType, int nHriFontPosition){
 
@@ -501,15 +388,7 @@ public class PrinterCommand {
         return command;
     }
 
-    /**
-     * 设置打印模式(选择字体(font:A font:B),加粗,字体倍高倍宽(最大4倍高宽))
-     * @param str          打印的字符串
-     * @param bold		         加粗
-     * @param font		         选择字型
-     * @param widthsize    倍宽
-     * @param heigthsize   倍高
-     * @return
-     */
+
     public static byte[] POS_Set_Font(String str, int bold, int font, int widthsize, int heigthsize){
 
         if(str.length() == 0 | widthsize<0 | widthsize >4 | heigthsize<0 | heigthsize>4
@@ -529,8 +408,8 @@ public class PrinterCommand {
 
         byte[] command = new byte[strData.length + 9];
 
-        byte[] intToWidth = { 0x00, 0x10, 0x20, 0x30 };//最大四倍宽
-        byte[] intToHeight = { 0x00, 0x01, 0x02, 0x03 };//最大四倍高
+        byte[] intToWidth = { 0x00, 0x10, 0x20, 0x30 };
+        byte[] intToHeight = { 0x00, 0x01, 0x02, 0x03 };
 
         command[0] = 27;
         command[1] = 69;

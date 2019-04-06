@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Model.APIRespose;
-//import com.edebtor.oclimb.edebtor.Model.credit_report;
+import com.edebtor.oclimb.edebtor.Model.credit_report;
 import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
 import com.edebtor.oclimb.edebtor.utill.Database;
 
-//import org.w3c.dom.Text;
-//import javax.sql.CommonDataSource;
+import org.w3c.dom.Text;
+import javax.sql.CommonDataSource;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,8 +65,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i = new Intent(LoginActivity.this, crdit_manage.class);
-                //startActivity(i);
                 mProgress.show();
                 try {
 
@@ -88,7 +86,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else if(lo_result != "0"){
 
-                    //Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
                     mProgress.dismiss();
                     uid = lo_result;
                     Intent i = new Intent(LoginActivity.this, loading.class);
@@ -112,10 +109,6 @@ public class LoginActivity extends AppCompatActivity {
                     alert.show();
                 }
 
-
-                /* authenticaUser(et_uname.getText().toString(),et_pass.getText().toString());*/
-
-
             }
         });
     }
@@ -125,7 +118,9 @@ public class LoginActivity extends AppCompatActivity {
                 .enqueue(new Callback<APIRespose>() {
                     @Override
                     public void onResponse(Call<APIRespose> call, Response<APIRespose> response) {
+
                         APIRespose result = response.body();
+                        System.out.println("RESULTTTTT! "+ result);
                         if(result.isError()){
                             mProgress.dismiss();
                             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(LoginActivity.this);
@@ -143,10 +138,9 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
 
-                            //Toast.makeText(LoginActivity.this, result.getError_msg(), Toast.LENGTH_SHORT).show();
+
                         }else{
                             mProgress.dismiss();
-                            //Toast.makeText(LoginActivity.this, "Login Success.", Toast.LENGTH_SHORT).show();
                             uid = result.getIdUser();
                             Intent i = new Intent(LoginActivity.this, loading.class);
                             startActivity(i);

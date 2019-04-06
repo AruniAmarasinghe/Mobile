@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-//import android.os.AsyncTask;
-//import android.support.annotation.Nullable;
-//import android.support.v7.app.AlertDialog;
+import android.os.AsyncTask;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,21 +16,20 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-//import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
+import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Model.two_item;
 import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
-//import com.edebtor.oclimb.edebtor.printers.PrinterActivity;
+import com.edebtor.oclimb.edebtor.printers.PrinterActivity;
 import com.edebtor.oclimb.edebtor.utill.Database;
 
-//import org.json.JSONArray;
-//import org.json.JSONException;
-//import org.json.JSONObject;
-
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.Iterator;
-//import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class crdit_manage extends AppCompatActivity {
 
@@ -42,7 +41,6 @@ public class crdit_manage extends AppCompatActivity {
     String[] area_ids;
     String[] crdit_ids;
     String[] debetors;
-    //String crdit_id;
 
     Database db;
 
@@ -59,8 +57,6 @@ public class crdit_manage extends AppCompatActivity {
         getArea_value = (Spinner) findViewById(R.id.select_area);
         getDebitor_value = (Spinner) findViewById(R.id.select_deetor);
 
-
-
         getArea_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
@@ -73,9 +69,6 @@ public class crdit_manage extends AppCompatActivity {
                     area_id =pos;
                 }
                 DownloadDebitor(area_id);
-
-                // new DownloadDebitor().execute();
-
 
             }
             public void onNothingSelected(AdapterView<?> parent) {
@@ -99,8 +92,6 @@ public class crdit_manage extends AppCompatActivity {
         });
 
 
-        // new DownloadArea().execute();
-
         DownloadArea();
 
         btn_next=findViewById(R.id.btn_next);
@@ -109,64 +100,34 @@ public class crdit_manage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                AlertDialog.Builder altdial= new AlertDialog.Builder(crdit_manage.this);
-//                altdial.setMessage("Are you sure?").setCancelable(false)
-//                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
 
-                                // Intent i = new Intent(crdit_manage.this, PrinterActivity.class);
-                                //System.out.println("aaaaaaaaaaaa"+getArea_value.getSelectedItem());
+            if(getArea_value.getSelectedItem()==("Select Area") || getDebitor_value.getSelectedItem()==("Select Customer")) {
 
-                                if(getArea_value.getSelectedItem()==("Select Area") || getDebitor_value.getSelectedItem()==("Select Customer")) {
+                Toast.makeText(crdit_manage.this, "Please Select Area and Customer.", Toast.LENGTH_SHORT).show();
 
-                                    Toast.makeText(crdit_manage.this, "Please Select Area and Customer.", Toast.LENGTH_SHORT).show();
-
-                                }else{
-                                    Intent in = new Intent(crdit_manage.this, collection.class);
-                                    // i.putExtra("crdit_id", crdit_id);
-                                    startActivity(in);
-                                }
-
-//                            }
-//                        })
-//                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                dialogInterface.cancel();
-//                            }
-//                        });
-
-//                AlertDialog alert= altdial.create();
-//                /*alert.setTitle("Credit");*/
-//                alert.show();
-
-
+            }else{
+                Intent in = new Intent(crdit_manage.this, collection.class);
+                // i.putExtra("crdit_id", crdit_id);
+                startActivity(in);
+            }
 
             }
         });
-
-
 
 
     }
 
     private void setAreaValue(String[] areac) {
 
-        // System.out.println("oooook");
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
                 context, android.R.layout.simple_spinner_item, areac
         );
-
-
-        //   spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
         getArea_value.setAdapter(spinnerArrayAdapter);
 
     }
 
-    //==========================================================================================
 
     private void setDebitorValue(String[] debetors) {
 
@@ -175,96 +136,9 @@ public class crdit_manage extends AppCompatActivity {
                 context, android.R.layout.simple_spinner_item, debetors
         );
 
-
-        //spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
         getDebitor_value.setAdapter(spinnerArrayAdapter);
 
     }
-
-    //==========================================================================================
-   /* class DownloadArea extends AsyncTask<String, Void, JSONObject>
-
-    {
-       *//* private String json;
-        private JSONObject jObj;
-
-
-
-        protected void onPreExecute () {
-
-
-
-
-            super.onPreExecute();
-
-        }
-
-        protected JSONObject doInBackground (String...args){
-
-            try {
-                String uid = LoginActivity.uid;
-                //System.out.println("uid " + uid);
-                String merchantURL = commo.BASE_URL+"collection_area_user.php";
-                HashMap<String, String> params = new HashMap<>();
-
-                params.put("uid", uid);
-
-
-                ServiceHandler sh = new ServiceHandler(context);
-                json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                System.out.println("ttttt download " + json);
-
-                jObj = new JSONObject(json);
-            } catch (Exception e) {
-                System.out.println("ttttt download " + e.getMessage());
-            }
-
-            return jObj;
-
-        }
-
-        protected void onPostExecute (JSONObject json_object){
-
-
-            if (json_object != null) {
-                System.out.println("ttttt download " + json_object.toString());
-
-
-                try {
-                    JSONArray arr=json_object.getJSONArray("Area");
-                    //String error = json_object.getString();
-                    String[] area = new String[arr.length()];
-                    area_ids= new String[arr.length()];
-                    int[] ids = new int[arr.length()];
-                    Log.d("assss-----------",ids.toString());
-                    for (int i = 0; i <arr.length() ; i++) {
-                        JSONObject aria=arr.getJSONObject(i);
-                        area[i]=aria.getString("Area");
-                        area_ids[i]=aria.getString("id");
-                      //  Log.d("assss-----------",aria.getString("Area"));
-
-                    }
-                    setAreaValue(area);
-
-
-
-
-
-                } catch (JSONException e) {
-
-                    e.printStackTrace();
-                    System.out.println("ttttt download error " + e.getMessage());
-                }
-
-            }
-        }*//*
-
-
-
-    }
-*/
 
     private void DownloadArea(){
 
@@ -305,7 +179,7 @@ public class crdit_manage extends AppCompatActivity {
     private void DownloadDebitor(int areaid){
 
         try {
-            //   int uid = Integer.parseInt(LoginActivity.uid);
+
             ArrayList<two_item> list = db.getUserAreaDebetor(areaid);
 
 
@@ -320,7 +194,6 @@ public class crdit_manage extends AppCompatActivity {
                     debetors[i] = t.getValue();
 
                     i++;
-                    // Log.i("Value of element "+i, String.valueOf(list.get(i)));
                 }
                 setDebitorValue(debetors);
             }else{
@@ -336,106 +209,5 @@ public class crdit_manage extends AppCompatActivity {
 
     }
 
-
-    //==========================================================================================
-
-
-
-   /* class DownloadDebitor extends AsyncTask<String, Void, JSONObject>
-
-    {
-        private String json;
-        private JSONObject jObj;
-
-
-
-        protected void onPreExecute () {
-
-
-
-
-            super.onPreExecute();
-
-        }
-
-        protected JSONObject doInBackground (String...args){
-
-            try {
-               // String uid = LoginActivity.uid;
-                System.out.println("area_id " + area_id);
-                String merchantURL = commo.BASE_URL+"collection_debitor.php";
-                HashMap<String, String> params = new HashMap<>();
-
-                params.put("area_id", area_id);
-
-
-                ServiceHandler sh = new ServiceHandler(context);
-                json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                System.out.println("ttttt download " + json);
-
-                jObj = new JSONObject(json);
-            } catch (Exception e) {
-                System.out.println("ttttt download " + e.getMessage());
-            }
-
-            return jObj;
-
-        }
-
-        protected void onPostExecute (JSONObject json_object){
-
-
-            if (json_object != null) {
-                System.out.println("ttttt download " + json_object.toString());
-
-
-                try {
-
-                    boolean error = json_object.getBoolean("error");
-
-                    if(error){
-                        String errormsg = json_object.getString("error_msg");
-                        String[] debetors = new String[]{"No debitor in area"};
-                        setDebitorValue(debetors);
-                    }else {
-                        //Log.d("error_val",error+" "+errormsg);
-
-                        JSONArray arr = json_object.getJSONArray("get_debetor");
-                        String[] debetors = new String[arr.length()];
-                        crdit_ids = new String[arr.length()];
-                        int[] ids = new int[arr.length()];
-
-
-                        for (int i = 0; i < arr.length(); i++) {
-                            JSONObject getdebetors = arr.getJSONObject(i);
-                            debetors[i] = getdebetors.getString("debetor");
-                            crdit_ids[i] = getdebetors.getString("id");
-                            //  Log.d("assss-----------",aria.getString("Area"));
-
-                        }
-                        setDebitorValue(debetors);
-
-                    }
-
-
-
-
-
-
-
-
-                } catch (JSONException e) {
-
-                    e.printStackTrace();
-                    System.out.println("ttttt download error " + e.getMessage());
-                }
-
-            }
-        }
-
-
-
-    }
-*/
 
 }

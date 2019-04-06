@@ -48,7 +48,6 @@ public class cridit_histry extends AppCompatActivity {
             if(list.size() > 0) {
 
                 String[] area = new String[list.size()];
-                //area_ids = new String[list.size()];
                 int i = 0;
 
                 cr_item = new ArrayList<>();
@@ -59,30 +58,16 @@ public class cridit_histry extends AppCompatActivity {
                     int sid = Integer.parseInt(t.getId());
 
                     cr_item.add(new crdit_histry_item(sid,t.getDe_date(),t.getDe_name(),t.getCrdit()));
-                    // area_ids[i] = t.getId();
-                    // area[i] = t.getValue();
+
                     i++;
-                    // Log.i("Value of element "+i, String.valueOf(list.get(i)));
+
                 }
 
-
-
-
-            /*cr_item.add(new crdit_histry_item(1,"2018-11-10","Naveen Damitha","200"));
-            cr_item.add(new crdit_histry_item(2,"2018-11-11","Naveen Damitha","200"));
-            cr_item.add(new crdit_histry_item(3,"2018-11-12","Naveen Damitha","200"));
-            cr_item.add(new crdit_histry_item(4,"2018-11-13","Naveen Damitha","200"));
-            cr_item.add(new crdit_histry_item(5,"2018-11-14","Naveen Damitha","200"));
-            cr_item.add(new crdit_histry_item(6,"2018-11-15","Naveen Damitha","200"));
-*/
                 adapter = new crdit_histry_item_Adapter(getApplicationContext(),cr_item);
                 cr_histry.setAdapter(adapter);
 
-                // setAreaValue(area);
             }else{
-                //String[] area = new String[]{"Area can't Assing "};
-                //setDebitorValue(debetors);
-                // setAreaValue(area);
+
             }
 
 

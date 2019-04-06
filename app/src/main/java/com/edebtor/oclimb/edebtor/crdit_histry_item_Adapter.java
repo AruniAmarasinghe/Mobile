@@ -39,14 +39,12 @@ public class crdit_histry_item_Adapter extends BaseAdapter {
         TextView cr_price = v.findViewById(R.id.credit_Price);
         TextView de_name = v.findViewById(R.id.Debetor_name);
         TextView cr_date = v.findViewById(R.id.credit_date);
-
         cr_price.setText("Rs."+mCreditList.get(i).getCredit());
         de_name.setText(mCreditList.get(i).getDebetor_name());
         cr_date.setText(mCreditList.get(i).getDate());
 
 
         v.setTag(mCreditList.get(i).getId());
-
 
         return v;
     }

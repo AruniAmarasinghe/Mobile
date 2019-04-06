@@ -9,6 +9,7 @@ package com.edebtor.oclimb.edebtor;
 
 
         public crdit_histry_item(int id, String date, String debetor_name, String credit) {
+
             this.id = id;
             this.date = date;
             this.debetor_name = debetor_name;

@@ -142,29 +142,6 @@
             android:background="@drawable/focus_border_style"
             />
 
-        <!-- <TextView
-             android:id="@+id/textView8"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Balance"
-             android:layout_marginTop="10dp"
-             android:layout_marginLeft="20dp"
-             tools:layout_editor_absoluteX="7dp"
-             tools:layout_editor_absoluteY="146dp" />
-
-
-         <EditText
-             android:id="@+id/balance"
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:layout_marginTop="20dp"
-             android:layout_marginLeft="20dp"
-             android:layout_marginRight="20dp"
-             android:ems="10"
-             android:focusable="false"
-             android:paddingLeft="10dp"
-             android:background="@drawable/focus_border_style"
-             />-->
 
         <TextView
             android:id="@+id/textView9"
@@ -237,29 +214,6 @@
             android:text="0"
             />
 
-        <!-- <TextView
-             android:id="@+id/textView3"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Paid Amount"
-             android:layout_marginTop="10dp"
-             android:layout_marginLeft="20dp"
-             tools:layout_editor_absoluteX="7dp"
-             tools:layout_editor_absoluteY="146dp" />
-
-
-         <EditText
-             android:id="@+id/paid_amount"
-             android:layout_width="match_parent"
-             android:layout_height="50dp"
-             android:layout_marginTop="20dp"
-             android:layout_marginLeft="20dp"
-             android:layout_marginRight="20dp"
-             android:ems="10"
-             android:paddingLeft="10dp"
-             android:background="@drawable/focus_border_style"
-             />
- -->
 
         <TextView
             android:id="@+id/textView7"
@@ -286,8 +240,9 @@
             android:background="@drawable/focus_border_style"
 
             />
+
         <Button
-            android:id="@+id/btn_print"
+            android:id="@+id/btn_print_csr"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="40dp"
@@ -295,10 +250,10 @@
             android:layout_marginRight="20dp"
             android:background="@color/buttonColor"
             android:textColor="@color/fontColor"
-            android:text="Customer Copy" />
+            android:text="Collector Copy" />
 
         <Button
-            android:id="@+id/btn_print_csr"
+            android:id="@+id/btn_print"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
@@ -306,7 +261,8 @@
             android:layout_marginRight="20dp"
             android:background="@color/buttonColor"
             android:textColor="@color/fontColor"
-            android:text="Collector Copy" />
+            android:text="Customer Copy" />
+
 
         <Button
             android:id="@+id/btn_histry"

@@ -9,7 +9,6 @@ public class two_item {
 
         this.id=id;
         this.value=value;
-
     }
 
 

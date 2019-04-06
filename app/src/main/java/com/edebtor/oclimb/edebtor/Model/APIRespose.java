@@ -1,6 +1,7 @@
 package com.edebtor.oclimb.edebtor.Model;
 
 public class APIRespose {
+
     private boolean error ;
     private String idUser;
     private String error_msg;

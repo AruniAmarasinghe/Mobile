@@ -442,46 +442,6 @@ public class BluetoothService {
             }
         }
 
-        /*
-        //
-        private boolean SPPReadTimeout(byte[] Data, int DataLen, int Timeout){
-          for (int i = 0; i < Timeout / 5; i++)
-          {
-            try
-            {
-              if (mmInStream.available() >= DataLen)
-              {
-                try
-                {
-                	mmInStream.read(Data, 0, DataLen);
-                  return true;
-                }
-                catch (IOException e)
-                {
-                  ErrorMessage = "读取蓝牙数据失败";
-                  return false;
-                }
-              }
-            }
-            catch (IOException e)
-            {
-              ErrorMessage = "读取蓝牙数据失败";
-              return false;
-            }
-            try
-            {
-              Thread.sleep(5L);
-            }
-            catch (InterruptedException e)
-            {
-              ErrorMessage = "读取蓝牙数据失败";
-              return false;
-            }
-          }
-          ErrorMessage = "蓝牙读数据超时";
-          return false;
-        }
-        */
         public void cancel() {
             try {
                 mmSocket.close();

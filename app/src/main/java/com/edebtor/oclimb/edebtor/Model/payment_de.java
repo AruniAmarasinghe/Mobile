@@ -10,8 +10,6 @@ public class payment_de {
     private String paidAmount;
     private String cid;
 
-
-
     public payment_de(String id, String userid, String dailyPay, String payFor, String addAmount, String paidAmount, String cid) {
         this.setId(id);
         this.setUserid(userid);

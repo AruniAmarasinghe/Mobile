@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
-//
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,22 +49,14 @@ public class debitors_reg extends AppCompatActivity {
         pno1 = (EditText) findViewById(R.id.phno1);
         pno2 = (EditText) findViewById(R.id.phno2);
 
-
-
-
-
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i = new Intent(LoginActivity.this, crdit_manage.class);
-                //startActivity(i);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(debitors_reg.this);
                 builder.setMessage("Customer Register").setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-
                         g_nic = nic.getText().toString();
                         g_fname = fname.getText().toString();
                         g_lname = lname.getText().toString();
@@ -74,8 +65,6 @@ public class debitors_reg extends AppCompatActivity {
                         g_address2 = address2.getText().toString();
                         g_pno1 = pno1.getText().toString();
                         g_pno2 = pno2.getText().toString();
-
-
 
                         if(g_nic.equals("")){
                             Toast.makeText(debitors_reg.this, "Please enter the NIC.", Toast.LENGTH_SHORT).show();
@@ -118,17 +107,6 @@ public class debitors_reg extends AppCompatActivity {
                 AlertDialog alt =   builder.create();
                 alt.show();
 
-               /* g_nic = nic.getText().toString();
-                g_fname = fname.getText().toString();
-                g_lname = lname.getText().toString();
-                g_email = email.getText().toString();
-                g_address1 = address1.getText().toString();
-                g_address2 = address2.getText().toString();
-                g_pno1 = pno1.getText().toString();
-                g_pno2 = pno2.getText().toString();
-
-             new DownloadDebitor().execute();*/
-
 
             }
         });
@@ -137,25 +115,13 @@ public class debitors_reg extends AppCompatActivity {
     }
 
 
-
-
-//==========================================================================================
-
-
-
     class DownloadDebitor extends AsyncTask<String, Void, JSONObject>
 
     {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -163,8 +129,7 @@ public class debitors_reg extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                // String uid = LoginActivity.uid;
-                // System.out.println("area_id " + area_id);
+
                 String token="525252";
                 String merchantURL = commo.BASE_URL+"debitors_reg.php";
                 HashMap<String, String> params = new HashMap<>();
@@ -180,13 +145,8 @@ public class debitors_reg extends AppCompatActivity {
                 params.put("pno1", g_pno1);
                 params.put("pno2", g_pno2);
 
-
-
-
-
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
@@ -222,23 +182,8 @@ public class debitors_reg extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
 
 
-                                Intent in = new Intent(debitors_reg.this, main_menu.class);
-                                startActivity(in);
-
-                      /*  JSONArray arr = json_object.getJSONArray("get_debetor");
-                        String[] debetors = new String[arr.length()];*/
-                        /*crdit_ids = new String[arr.length()];
-                        int[] ids = new int[arr.length()];
-*/
-
-                        /*for (int i = 0; i < arr.length(); i++) {
-                            JSONObject getdebetors = arr.getJSONObject(i);
-                            debetors[i] = getdebetors.getString("debetor");
-                            crdit_ids[i] = getdebetors.getString("id");
-                            //  Log.d("assss-----------",aria.getString("Area"));
-
-                        }*/
-
+                        Intent in = new Intent(debitors_reg.this, main_menu.class);
+                        startActivity(in);
 
                             }
                         }) ;
@@ -249,16 +194,10 @@ public class debitors_reg extends AppCompatActivity {
                     }
 
 
-
-
-
-
-
-
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }

@@ -2,9 +2,6 @@
 package com.edebtor.oclimb.edebtor.printers;
 
 import java.util.Set;
-
-
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

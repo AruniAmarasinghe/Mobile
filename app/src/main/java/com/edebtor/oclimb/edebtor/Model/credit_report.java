@@ -1,7 +1,6 @@
 package com.edebtor.oclimb.edebtor.Model;
 
 public class credit_report {
-
     private String id;
     private String crdit;
     private String de_name;

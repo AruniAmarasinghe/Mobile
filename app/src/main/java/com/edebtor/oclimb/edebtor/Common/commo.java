@@ -5,6 +5,7 @@ import com.edebtor.oclimb.edebtor.Remote.RetrofitClient;
 
 
 public class commo {
+
     public static final String BASE_URL = "http://g5.creditlanka.com/main/API/";
     //public static final String BASE_URL = "http://savimaga.com/app/main/API/";
 

@@ -37,7 +37,6 @@ public class sync extends AppCompatActivity {
         db=new Database(sync.this);
 
         cd = new ConnectionDetector(context);
-        //    System.out.println("0909090909----"+cd.isConnectingToInternet());
 
         boolean isconnect = cd.isConnectingToInternet();
         if(isconnect) {
@@ -46,7 +45,6 @@ public class sync extends AppCompatActivity {
 
 
         }else{
-
 
             new Thread(new Runnable() {
                 @Override
@@ -65,11 +63,7 @@ public class sync extends AppCompatActivity {
 
             }).start();
 
-
-
         }
-
-
 
     }
 
@@ -77,18 +71,12 @@ public class sync extends AppCompatActivity {
 
 
     private  void connection(){
-        //  Toast.makeText(sync.this, "Success.", Toast.LENGTH_SHORT).show();
 
         int syncCount = db.checkSync();
 
         if(syncCount > 0){
-            // System.out.println("aaaaaaaaaaaaaaaaaaaa"+syncCount);
-
-            //  return "succes";
 
             String re_val =  uploadPayement();
-
-            // System.out.println("aaaaaaaaaaaaaaaaaaaa123"+re_val);
             if(re_val == "succes" ){
 
                 db.removeTablevalue();
@@ -118,8 +106,6 @@ public class sync extends AppCompatActivity {
             new Download_exprenses().execute();
         }
 
-        //  System.out.println("aaaaaaaaaaaaaaaaaaaa");
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -137,10 +123,6 @@ public class sync extends AppCompatActivity {
 
         }).start();
 
-
-
-
-
     }
 
     class Download_userde extends AsyncTask<String, Void, JSONObject>
@@ -157,23 +139,17 @@ public class sync extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                //String uid = LoginActivity.uid;
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"user_de.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                // System.out.println("ttttt download " + e.getMessage());
             }
 
             return jObj;
@@ -184,14 +160,9 @@ public class sync extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("user_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
                     int[] ids = new int[arr.length()];
                     Log.d("assss-u-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -203,15 +174,10 @@ public class sync extends AppCompatActivity {
                         String User_Type_idUser_Type =arr_user.getString("User_Type_idUser_Type");
                         String User_Details_idUser_Details =arr_user.getString("User_Details_idUser_Details");
                         String Status =arr_user.getString("Status");
-                        //  Log.d("assss2-----------",ids.toString());
-
                         db.user_data(idUser,Uname,Pass,User_Type_idUser_Type,User_Details_idUser_Details,Status);
 
-                        // area_ids[i]=aria.getString("id");
-                        // Log.d("assss1-----------",Uname);
 
                     }
-                    //   setAreaValue(area);
 
                 } catch (JSONException e) {
 
@@ -239,23 +205,19 @@ public class sync extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                //String uid = LoginActivity.uid;
+
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"collection_area_user_new.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -266,14 +228,10 @@ public class sync extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("area_user_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
                     Log.d("assss-A-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -283,20 +241,17 @@ public class sync extends AppCompatActivity {
                         String CollectionArea_idCollectionArea =arr_user.getString("CollectionArea_idCollectionArea");
                         String User_idUser =arr_user.getString("User_idUser");
 
-                        // Log.d("assss2-----------",ids.toString());
-
                         db.collection_area_user_data(idCollection_Area_User,CollectionArea_idCollectionArea,User_idUser);
 
-                        // area_ids[i]=aria.getString("id");
                         Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
+
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -328,15 +283,13 @@ public class sync extends AppCompatActivity {
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
+
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -347,14 +300,10 @@ public class sync extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("crdit_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
                     Log.d("assss-ci-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -376,20 +325,17 @@ public class sync extends AppCompatActivity {
                         String Status =arr_user.getString("Status");
                         String sync_status ="0";
 
-                        // Log.d("assss2-----------",ids.toString());
 
                         db.credit_invoice_data(idCredit_Invoice,TotalAmount,GrantAmount,InterestRate,DailyEqualPayment,Days,PaidAmount,PenaltyPaid,
                                 Settled,DateTime,Debitors_idDebitors,CollectionArea_idCollectionArea,user_idUser,Status,sync_status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
+
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -416,21 +362,16 @@ public class sync extends AppCompatActivity {
             try {
 
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"invoice_payments.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
             }
 
             return jObj;
@@ -441,16 +382,11 @@ public class sync extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("invoice_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
-                    //Log.d("assss-ip-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
                         JSONObject arr_user=arr.getJSONObject(i);
 
@@ -464,20 +400,14 @@ public class sync extends AppCompatActivity {
                         String Status =arr_user.getString("Status");
                         String sync_status ="0";
 
-                        // Log.d("assss2ss-----------",user_idUser);
-
-
                         db.invoice_payments_data(idInvoice_Payments,Amount,AdditionalAmount,DateTime,PayFor,Credit_Invoice_idCredit_Invoice,user_idUser,Status,sync_status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
-
                     }
-                    //   setAreaValue(area);
+
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -512,15 +442,12 @@ public class sync extends AppCompatActivity {
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -531,14 +458,10 @@ public class sync extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
 
 
                 try {
                     JSONArray arr=json_object.getJSONArray("debitors_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
                     int[] ids = new int[arr.length()];
                     Log.d("assss-d-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -556,25 +479,16 @@ public class sync extends AppCompatActivity {
                         String Status =arr_user.getString("Status");
                         String sync_status ="0";
 
-                        // Log.d("assss2-----------",ids.toString());
-
-
                         db.debitors_data(idDebitors,NIC,Fname,Lname,Address1,Address2,Pno1,Pno2,Email,Status,sync_status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
-
-
-
 
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -605,21 +519,18 @@ public class sync extends AppCompatActivity {
             try {
 
                 String token="525252";
-                //System.out.println("uid " + uid);
+
                 String merchantURL = commo.BASE_URL+"collectionarea.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -630,14 +541,12 @@ public class sync extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
+
 
 
                 try {
                     JSONArray arr=json_object.getJSONArray("area_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
                     Log.d("assss-area-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -649,21 +558,16 @@ public class sync extends AppCompatActivity {
                         String Status =arr_user.getString("Status");
 
 
-                        // Log.d("assss2-----------",ids.toString());
-
-
                         db.collection_area_data(idCollectionArea,CollectionArea,Status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
+
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -677,17 +581,11 @@ public class sync extends AppCompatActivity {
     private String uploadPayement(){
 
         try {
-            //   int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("pppppppppp1");
+
             ArrayList<payment_de> list = db.SetnewPayment();
-            //  System.out.println("pppppppppp");
-
-            // System.out.println("aaaaaaaaaaaaaaaaaaaa---"+list.size());
-
 
 
             if(list.size() > 0) {
-                //  String[] debetors = new String[list.size()];
 
                 int i=0;
                 for (payment_de t : list) {
@@ -699,7 +597,6 @@ public class sync extends AppCompatActivity {
                     paidAmount = t.getPaidAmount();
                     cid = t.getCid();
 
-                    //System.out.println("aaaaaaaaaaaaaaaaaaaa-"+paidAmount);
 
                     new uploadPayement().execute();
 
@@ -711,7 +608,6 @@ public class sync extends AppCompatActivity {
 
             }
 
-            //System.out.println("zzzzz-");
 
 
         }catch (Exception e){
@@ -738,8 +634,7 @@ public class sync extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                // String uid = LoginActivity.uid;
-                // System.out.println("area_id " + area_id);
+
                 String token="525252";
                 String merchantURL = commo.BASE_URL+"invoice_payment_add.php";
                 HashMap<String, String> params = new HashMap<>();
@@ -755,11 +650,10 @@ public class sync extends AppCompatActivity {
 
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("aaaaaaaaaaaaaaaaaaaa download " + json);
+
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
             }
 
             return jObj;
@@ -779,31 +673,13 @@ public class sync extends AppCompatActivity {
 
                     if(error){
                         String errormsg = json_object.getString("error_msg");
-                        //  String[] debetors = new String[]{"No debitor in area"};
 
                     }else {
-                        //Log.d("error_val",error+" "+errormsg);
 
                         String errormsg = json_object.getString("payement_de");
 
-                        //  System.out.println("ttttt message " + errormsg);
 
                         Toast.makeText(sync.this, "Debtor Success.", Toast.LENGTH_SHORT).show();
-
-                      /*  JSONArray arr = json_object.getJSONArray("get_debetor");
-                        String[] debetors = new String[arr.length()];*/
-                        /*crdit_ids = new String[arr.length()];
-                        int[] ids = new int[arr.length()];
-*/
-
-                        /*for (int i = 0; i < arr.length(); i++) {
-                            JSONObject getdebetors = arr.getJSONObject(i);
-                            debetors[i] = getdebetors.getString("debetor");
-                            crdit_ids[i] = getdebetors.getString("id");
-                            //  Log.d("assss-----------",aria.getString("Area"));
-
-                        }*/
-
 
                     }
 
@@ -836,23 +712,18 @@ public class sync extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                //String uid = LoginActivity.uid;
+
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"se_exprenses.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                // System.out.println("ttttt download " + e.getMessage());
             }
 
             return jObj;
@@ -863,16 +734,13 @@ public class sync extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
 
 
                 try {
                     JSONArray arr=json_object.getJSONArray("exprences_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
-                    //Log.d("assss-u-----------",ids.toString());
+
                     for (int i = 0; i <arr.length() ; i++) {
                         JSONObject arr_user=arr.getJSONObject(i);
 
@@ -882,15 +750,11 @@ public class sync extends AppCompatActivity {
                         String date =arr_user.getString("Date");
                         String idUser =arr_user.getString("user_idUser");
                         String Status =arr_user.getString("Status");
-                        //  Log.d("assss2-----------",ids.toString());
-                        //CollectorExpenses_data(String id, String amount, String details, String date,String idUser,  String status)
+
                         db.CollectorExpenses_data(id,amount,details,date,idUser,Status);
 
-                        // area_ids[i]=aria.getString("id");
-                        // Log.d("assss1-----------",Uname);
 
                     }
-                    //   setAreaValue(area);
 
                 } catch (JSONException e) {
 

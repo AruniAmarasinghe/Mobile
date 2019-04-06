@@ -2,10 +2,10 @@ package com.edebtor.oclimb.edebtor.printers;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-//import android.app.AlertDialog;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-//import android.content.DialogInterface;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,13 +13,13 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-//import android.view.Window;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.edebtor.oclimb.edebtor.R;
 import com.edebtor.oclimb.edebtor.collection;
-//import com.edebtor.oclimb.edebtor.loan_apply;
+import com.edebtor.oclimb.edebtor.loan_apply;
 import com.edebtor.oclimb.edebtor.main_menu;
 
 import java.io.UnsupportedEncodingException;
@@ -64,40 +64,39 @@ public class PrinterActivity extends Activity {
 	// Member object for the services
 	private BluetoothService mService = null;
 
-/***************************   指                 令****************************************************************/
+/***************************   ****************************************************************/
 
 
 	final byte[][] byteCommands = {
-			{ 0x1b, 0x40, 0x0a },// 复位打印机
-			{ 0x0a }, //打印并走纸
-			{ 0x1b, 0x4d, 0x00 },// 标准ASCII字体
-			{ 0x1b, 0x4d, 0x01 },// 压缩ASCII字体
-			{ 0x1d, 0x21, 0x00 },// 字体不放大
-			{ 0x1d, 0x21, 0x11 },// 宽高加倍
-			{ 0x1d, 0x21, 0x22 },// 宽高加倍
-			{ 0x1d, 0x21, 0x33 },// 宽高加倍
-			{ 0x1b, 0x45, 0x00 },// 取消加粗模式
-			{ 0x1b, 0x45, 0x01 },// 选择加粗模式
-			{ 0x1b, 0x7b, 0x00 },// 取消倒置打印
-			{ 0x1b, 0x7b, 0x01 },// 选择倒置打印
-			{ 0x1d, 0x42, 0x00 },// 取消黑白反显
-			{ 0x1d, 0x42, 0x01 },// 选择黑白反显
-			{ 0x1b, 0x56, 0x00 },// 取消顺时针旋转90°
-			{ 0x1b, 0x56, 0x01 },// 选择顺时针旋转90°
-			{ 0x0a, 0x1d, 0x56, 0x42, 0x01, 0x0a },//切刀指令
-			{ 0x1b, 0x42, 0x03, 0x03 },//蜂鸣指令
-			{ 0x1b, 0x70, 0x00, 0x50, 0x50 },//钱箱指令
-			{ 0x10, 0x14, 0x00, 0x05, 0x05 },//实时弹钱箱指令
-			{ 0x1c, 0x2e },// 进入字符模式
-			{ 0x1c, 0x26 }, //进入中文模式
-			{ 0x1f, 0x11, 0x04 }, //打印自检页
-			{ 0x1b, 0x63, 0x35, 0x01 }, //禁止按键
-			{ 0x1b, 0x63, 0x35, 0x00 }, //取消禁止按键
-			{ 0x1b, 0x2d, 0x02, 0x1c, 0x2d, 0x02 }, //设置下划线
-			{ 0x1b, 0x2d, 0x00, 0x1c, 0x2d, 0x00 }, //取消下划线
-			{ 0x1f, 0x11, 0x03 }, //打印机进入16进制模式
+			{ 0x1b, 0x40, 0x0a },
+			{ 0x0a },
+			{ 0x1b, 0x4d, 0x00 },
+			{ 0x1b, 0x4d, 0x01 },
+			{ 0x1d, 0x21, 0x00 },
+			{ 0x1d, 0x21, 0x11 },
+			{ 0x1d, 0x21, 0x22 },
+			{ 0x1d, 0x21, 0x33 },
+			{ 0x1b, 0x45, 0x00 },
+			{ 0x1b, 0x45, 0x01 },
+			{ 0x1b, 0x7b, 0x00 },
+			{ 0x1b, 0x7b, 0x01 },
+			{ 0x1d, 0x42, 0x00 },
+			{ 0x1d, 0x42, 0x01 },
+			{ 0x1b, 0x56, 0x00 },
+			{ 0x1b, 0x56, 0x01 },
+			{ 0x0a, 0x1d, 0x56, 0x42, 0x01, 0x0a },
+			{ 0x1b, 0x42, 0x03, 0x03 },
+			{ 0x1b, 0x70, 0x00, 0x50, 0x50 },
+			{ 0x10, 0x14, 0x00, 0x05, 0x05 },
+			{ 0x1c, 0x2e },
+			{ 0x1c, 0x26 },
+			{ 0x1f, 0x11, 0x04 },
+			{ 0x1b, 0x63, 0x35, 0x01 },
+			{ 0x1b, 0x63, 0x35, 0x00 },
+			{ 0x1b, 0x2d, 0x02, 0x1c, 0x2d, 0x02 },
+			{ 0x1b, 0x2d, 0x00, 0x1c, 0x2d, 0x00 },
+			{ 0x1f, 0x11, 0x03 },
 	};
-/***************************条                          码***************************************************************/
 
 
 /******************************************************************************************************/
@@ -310,14 +309,14 @@ String print_string="";
 						msg.getData().getString(TOAST), Toast.LENGTH_SHORT)
 						.show();
 				break;
-			case MESSAGE_CONNECTION_LOST:    //蓝牙已断开连接
+			case MESSAGE_CONNECTION_LOST:
                 Toast.makeText(getApplicationContext(), "Device connection was lost",
                                Toast.LENGTH_SHORT).show();
 				buttonPrint.setEnabled(false);
 				btn_stop.setEnabled(false);
 
                 break;
-            case MESSAGE_UNABLE_CONNECT:     //无法连接设备
+            case MESSAGE_UNABLE_CONNECT:
             	Toast.makeText(getApplicationContext(), "Unable to connect device",
                         Toast.LENGTH_SHORT).show();
             	break;
@@ -365,19 +364,7 @@ String print_string="";
 	}
 
 /****************************************************************************************************/
-	/**
-	 * 连接成功后打印测试页
-	 */
-	/*private void Print_Test(){
 
-
-			SendDataByte(PrinterCommand.POS_Print_Text(print_string, CHINESE, 0, 1, 1, 0));
-			SendDataByte(PrinterCommand.POS_Print_Text("\n\n", CHINESE, 0, 0, 0, 0));
-			SendDataByte(PrinterCommand.POS_Set_Cut(1));
-			SendDataByte(PrinterCommand.POS_Set_PrtInit());
-
-  	}
-	*/
 
 	private void BluetoothPrintTest() {
 
@@ -385,16 +372,10 @@ String print_string="";
 
 	}
 
-
 	private void KeyListenerInit() {
 
 		mService = new BluetoothService(this, mHandler);
 		buttonPrint.setEnabled(false);
 		btn_stop.setEnabled(false);
 	}
-
-
-
-
-
 }

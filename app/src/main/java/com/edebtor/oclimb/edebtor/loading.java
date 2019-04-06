@@ -9,12 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-//import android.widget.Toast;
+import android.widget.Toast;
 
 import com.edebtor.oclimb.edebtor.Common.ServiceHandler;
 import com.edebtor.oclimb.edebtor.Common.commo;
 import com.edebtor.oclimb.edebtor.Model.payment_de;
-//import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
+import com.edebtor.oclimb.edebtor.Remote.IMyAPI;
 import com.edebtor.oclimb.edebtor.utill.ConnectionDetector;
 import com.edebtor.oclimb.edebtor.utill.Database;
 
@@ -36,26 +36,17 @@ public class loading extends AppCompatActivity {
     private Handler handler = new Handler();
 
     Database db;
-
     Context context=this;
-
     ConnectionDetector cd;
 
-    /* IMyAPI mServicw;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-
-        //  progressbar = findViewById(R.id.prograsbar);
-        //  prograsseTimer = findViewById(R.id.timer);
-
-        /*mServicw = commo.getAPI();*/
         db=new Database(loading.this);
 
         cd = new ConnectionDetector(context);
-        //    System.out.println("0909090909----"+cd.isConnectingToInternet());
 
         boolean isconnect = cd.isConnectingToInternet();
         if(isconnect) {
@@ -63,7 +54,6 @@ public class loading extends AppCompatActivity {
             connection();
 
         }else{
-
 
             new Thread(new Runnable() {
                 @Override
@@ -86,19 +76,9 @@ public class loading extends AppCompatActivity {
 
         }
 
-
-
-
-
-
-
-
     }
 
     private  void connection(){
-        //Toast.makeText(loading.this, "Success.", Toast.LENGTH_SHORT).show();
-
-
 
         new Download_userde().execute();
         new Download_debitors_data().execute();
@@ -111,19 +91,12 @@ public class loading extends AppCompatActivity {
         int syncCount = db.checkSync();
 
         if(syncCount > 0){
-            // System.out.println("aaaaaaaaaaaaaaaaaaaa"+syncCount);
-
-            //  return "succes";
 
             String re_val =  uploadPayement();
 
-            //  System.out.println("aaaaaaaaaaaaaaaaaaaa"+re_val);
             if(re_val == "succes" ){
 
                 db.removeTablevalue();
-
-
-
                 new Download_userde().execute();
                 new Download_debitors_data().execute();
                 new Download_invoice_payments_data().execute();
@@ -165,12 +138,6 @@ public class loading extends AppCompatActivity {
 
         }).start();
 
-
-
-
-
-
-
     }
 
     class Download_userde extends AsyncTask<String, Void, JSONObject>
@@ -179,12 +146,7 @@ public class loading extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
 
             super.onPreExecute();
 
@@ -222,9 +184,6 @@ public class loading extends AppCompatActivity {
 
                 try {
                     JSONArray arr=json_object.getJSONArray("user_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
                     int[] ids = new int[arr.length()];
 
                     for (int i = 0; i <arr.length() ; i++) {
@@ -236,18 +195,11 @@ public class loading extends AppCompatActivity {
                         String User_Type_idUser_Type =arr_user.getString("User_Type_idUser_Type");
                         String User_Details_idUser_Details =arr_user.getString("User_Details_idUser_Details");
                         String Status =arr_user.getString("Status");
-                        //Log.d("assss-uu-----------",Status);
-                        // Log.d("assss-uu-----------",Uname);
+
                         db.user_data(idUser,Uname,Pass,User_Type_idUser_Type,User_Details_idUser_Details,Status);
 
-                        // area_ids[i]=aria.getString("id");
-                        // Log.d("assss1-----------",Uname);
 
                     }
-                    //   setAreaValue(area);
-
-
-
 
 
                 } catch (JSONException e) {
@@ -263,7 +215,6 @@ public class loading extends AppCompatActivity {
 
     }
 
-//==========================================================================================
 
     class Download_collection_area_user extends AsyncTask<String, Void, JSONObject>
 
@@ -275,9 +226,6 @@ public class loading extends AppCompatActivity {
 
         protected void onPreExecute () {
 
-
-
-
             super.onPreExecute();
 
         }
@@ -285,23 +233,19 @@ public class loading extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                //String uid = LoginActivity.uid;
+
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"collection_area_user_new.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -312,14 +256,10 @@ public class loading extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("area_user_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
                     Log.d("assss-A-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -329,24 +269,17 @@ public class loading extends AppCompatActivity {
                         String CollectionArea_idCollectionArea =arr_user.getString("CollectionArea_idCollectionArea");
                         String User_idUser =arr_user.getString("User_idUser");
 
-                        // Log.d("assss2-----------",ids.toString());
-
                         db.collection_area_user_data(idCollection_Area_User,CollectionArea_idCollectionArea,User_idUser);
 
-                        // area_ids[i]=aria.getString("id");
                         Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
-
-
-
 
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -355,8 +288,6 @@ public class loading extends AppCompatActivity {
 
 
     }
-
-//==========================================================================================
 
 
     class Download_credit_invoice_data extends AsyncTask<String, Void, JSONObject>
@@ -368,10 +299,6 @@ public class loading extends AppCompatActivity {
 
 
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -381,21 +308,18 @@ public class loading extends AppCompatActivity {
             try {
 
                 String token="525252";
-                //System.out.println("uid " + uid);
+
                 String merchantURL = commo.BASE_URL+"credit_invoice.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -404,16 +328,10 @@ public class loading extends AppCompatActivity {
 
         protected void onPostExecute (JSONObject json_object){
 
-
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("crdit_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
                     int[] ids = new int[arr.length()];
                     Log.d("assss-ci-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -435,25 +353,17 @@ public class loading extends AppCompatActivity {
                         String Status =arr_user.getString("Status");
                         String sync_status ="0";
 
-                        // Log.d("assss2-----------",ids.toString());
 
                         db.credit_invoice_data(idCredit_Invoice,TotalAmount,GrantAmount,InterestRate,DailyEqualPayment,Days,PaidAmount,PenaltyPaid,
                                 Settled,DateTime,Debitors_idDebitors,CollectionArea_idCollectionArea,user_idUser,Status,sync_status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
-
-
-
-
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -478,9 +388,6 @@ public class loading extends AppCompatActivity {
 
         protected void onPreExecute () {
 
-
-
-
             super.onPreExecute();
 
         }
@@ -490,21 +397,17 @@ public class loading extends AppCompatActivity {
             try {
 
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"invoice_payments.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -515,14 +418,9 @@ public class loading extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("invoice_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
                     int[] ids = new int[arr.length()];
                     Log.d("assss-ip-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -538,25 +436,14 @@ public class loading extends AppCompatActivity {
                         String Status =arr_user.getString("Status");
                         String sync_status ="0";
 
-                        // Log.d("assss2-----------",ids.toString());
-
-
                         db.invoice_payments_data(idInvoice_Payments,Amount,AdditionalAmount,DateTime,PayFor,Credit_Invoice_idCredit_Invoice,user_idUser,Status,sync_status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
-
                     }
-                    //   setAreaValue(area);
-
-
-
 
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
                 }
 
             }
@@ -580,9 +467,6 @@ public class loading extends AppCompatActivity {
 
         protected void onPreExecute () {
 
-
-
-
             super.onPreExecute();
 
         }
@@ -592,21 +476,16 @@ public class loading extends AppCompatActivity {
             try {
 
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"debitors.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
             }
 
             return jObj;
@@ -617,14 +496,9 @@ public class loading extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("debitors_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
                     int[] ids = new int[arr.length()];
                     Log.d("assss-d-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -642,25 +516,15 @@ public class loading extends AppCompatActivity {
                         String Status =arr_user.getString("Status");
                         String sync_status ="0";
 
-                        // Log.d("assss2-----------",ids.toString());
-
-
                         db.debitors_data(idDebitors,NIC,Fname,Lname,Address1,Address2,Pno1,Pno2,Email,Status,sync_status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
-
-
-
 
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
                 }
 
             }
@@ -684,9 +548,6 @@ public class loading extends AppCompatActivity {
 
         protected void onPreExecute () {
 
-
-
-
             super.onPreExecute();
 
         }
@@ -696,21 +557,17 @@ public class loading extends AppCompatActivity {
             try {
 
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"collectionarea.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
-                // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                //  System.out.println("ttttt download " + e.getMessage());
+
             }
 
             return jObj;
@@ -721,14 +578,10 @@ public class loading extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("area_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
                     Log.d("assss-area-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
@@ -739,26 +592,16 @@ public class loading extends AppCompatActivity {
 
                         String Status =arr_user.getString("Status");
 
-
-                        // Log.d("assss2-----------",ids.toString());
-
-
                         db.collection_area_data(idCollectionArea,CollectionArea,Status);
 
-                        // area_ids[i]=aria.getString("id");
-                        //Log.d("assss1-----------",User_idUser);
 
                     }
-                    //   setAreaValue(area);
-
-
-
 
 
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    // System.out.println("ttttt download error " + e.getMessage());
+
                 }
 
             }
@@ -774,17 +617,10 @@ public class loading extends AppCompatActivity {
     private String uploadPayement(){
 
         try {
-            //   int uid = Integer.parseInt(LoginActivity.uid);
-            //System.out.println("pppppppppp1");
+
             ArrayList<payment_de> list = db.SetnewPayment();
-            //  System.out.println("pppppppppp");
-
-            // System.out.println("aaaaaaaaaaaaaaaaaaaa---"+list.size());
-
-
 
             if(list.size() > 0) {
-                //  String[] debetors = new String[list.size()];
 
                 int i=0;
                 for (payment_de t : list) {
@@ -796,8 +632,6 @@ public class loading extends AppCompatActivity {
                     paidAmount = t.getPaidAmount();
                     cid = t.getCid();
 
-                    System.out.println("aaaaaaaaaaaaaaaaaaaa-"+paidAmount);
-
                     new uploadPayement().execute();
 
                     i++;
@@ -808,7 +642,6 @@ public class loading extends AppCompatActivity {
 
             }
 
-            //System.out.println("zzzzz-");
 
 
         }catch (Exception e){
@@ -827,13 +660,7 @@ public class loading extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -841,8 +668,7 @@ public class loading extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                // String uid = LoginActivity.uid;
-                // System.out.println("area_id " + area_id);
+
                 String token="525252";
                 String merchantURL = commo.BASE_URL+"invoice_payment_add.php";
                 HashMap<String, String> params = new HashMap<>();
@@ -855,11 +681,6 @@ public class loading extends AppCompatActivity {
                 params.put("addAmount", addAmount);
                 params.put("paidAmount", paidAmount);
                 params.put("cid", cid);
-
-
-
-
-
 
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
@@ -887,39 +708,13 @@ public class loading extends AppCompatActivity {
 
                     if(error){
                         String errormsg = json_object.getString("error_msg");
-                        //  String[] debetors = new String[]{"No debitor in area"};
 
                     }else {
-                        //Log.d("error_val",error+" "+errormsg);
 
                         String errormsg = json_object.getString("payement_de");
 
-                        //  System.out.println("ttttt message " + errormsg);
-
-                        //Toast.makeText(loading.this, "Debetor Success.", Toast.LENGTH_SHORT).show();
-
-                      /*  JSONArray arr = json_object.getJSONArray("get_debetor");
-                        String[] debetors = new String[arr.length()];*/
-                        /*crdit_ids = new String[arr.length()];
-                        int[] ids = new int[arr.length()];
-*/
-
-                        /*for (int i = 0; i < arr.length(); i++) {
-                            JSONObject getdebetors = arr.getJSONObject(i);
-                            debetors[i] = getdebetors.getString("debetor");
-                            crdit_ids[i] = getdebetors.getString("id");
-                            //  Log.d("assss-----------",aria.getString("Area"));
-
-                        }*/
-
 
                     }
-
-
-
-
-
-
 
 
                 } catch (JSONException e) {
@@ -944,13 +739,7 @@ public class loading extends AppCompatActivity {
         private String json;
         private JSONObject jObj;
 
-
-
         protected void onPreExecute () {
-
-
-
-
             super.onPreExecute();
 
         }
@@ -958,23 +747,18 @@ public class loading extends AppCompatActivity {
         protected JSONObject doInBackground (String...args){
 
             try {
-                //String uid = LoginActivity.uid;
                 String token="525252";
-                //System.out.println("uid " + uid);
                 String merchantURL = commo.BASE_URL+"se_exprenses.php";
                 HashMap<String, String> params = new HashMap<>();
 
                 params.put("token", token);
 
-
-                // Context context = this;
                 ServiceHandler sh = new ServiceHandler(context);
                 json = sh.makeHttpRequest(merchantURL, ServiceHandler.POST, params);
                 // System.out.println("ttttt download " + json);
 
                 jObj = new JSONObject(json);
             } catch (Exception e) {
-                // System.out.println("ttttt download " + e.getMessage());
             }
 
             return jObj;
@@ -985,16 +769,11 @@ public class loading extends AppCompatActivity {
 
 
             if (json_object != null) {
-                //System.out.println("ttttt download " + json_object.toString());
-
 
                 try {
                     JSONArray arr=json_object.getJSONArray("exprences_de");
-                    //String error = json_object.getString();
-                    //  String[] userde = new String[arr.length()];
-                    //  area_ids= new String[arr.length()];
+
                     int[] ids = new int[arr.length()];
-                    //Log.d("assss-u-----------",ids.toString());
                     for (int i = 0; i <arr.length() ; i++) {
                         JSONObject arr_user=arr.getJSONObject(i);
 
@@ -1004,18 +783,11 @@ public class loading extends AppCompatActivity {
                         String date =arr_user.getString("Date");
                         String idUser =arr_user.getString("user_idUser");
                         String Status =arr_user.getString("Status");
-                        //  Log.d("assss2-----------",ids.toString());
-                        //CollectorExpenses_data(String id, String amount, String details, String date,String idUser,  String status)
+
                         db.CollectorExpenses_data(id,amount,details,date,idUser,Status);
 
-                        // area_ids[i]=aria.getString("id");
-                        // Log.d("assss1-----------",Uname);
 
                     }
-                    //   setAreaValue(area);
-
-
-
 
 
                 } catch (JSONException e) {
@@ -1030,7 +802,5 @@ public class loading extends AppCompatActivity {
 
 
     }
-
-//==========================================================================================
 
 }
